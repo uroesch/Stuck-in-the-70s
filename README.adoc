@@ -1,53 +1,11 @@
-= Git Tutorial
+= Stuck in the 70's: Sanitize shell script from the disco era
 
-The course material presented here is meant for a technially inclined person
-with a high Unix proficiency and an interest of peaking under the hood. But has
-not had any type of exposure to the Git framework yet. A bit of exposure to other
-version control systems can be benficial but isn't a requirement.
+This presentation is diving into bash features I do not usually encounter in the
+wild. As a matter of fact most shell scripts are written without taking advantage
+of the features introduced by Korn Shell in the early 80's and the Bash Shell
+later in the same decade.
 
-== Build instructions
-
-=== Build dependencies
-
-====  Debian based
-
-There are three dependecies for building the document.  
-`git`, `docker.io` and `rake` 
-
-
-[source,shell]
-----
-$ sudo apt-get install git docker.io rake
-----
-
-==== RedHat based
-
-Not yet verified
-
-=== Creating documents
-
-With the `rake` command both the PDF and the HTML version of the questionaire
-for applicants and the documents with the answers are generated. 
-
-[source,shell]
-----
-git clone git@ssh.gitlab.puzzle.ch:uroesch/git-tutorial.git
-cd git-tutorial
-rake
-----
-
-Under directory `PDF/questionaire` the pdf files are located and the directory 
-`HTML/questionaire` contains the same document in HTML format.
-
-
-==== Genereate with alternative PDF theme
-
-Currently one additional theme for with the puzzle colors and font is present.
-To generate with the `puzzle` theme the following command is used.
-
-[source,shell]
-----
-rake THEME=puzzle
-----
-
-The files are then saved under `HTML/puzzle` and `PDF/puzzle`. 
+With Bash being ubiquitous throughout the Unix world there is little reason not to
+take advantage of the more advanced features it provides. During the presentation
+one learns how to make Bash scripts more predictable, less prone to errors an speed
+up the execution time by using built in functions.
