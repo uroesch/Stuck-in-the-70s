@@ -1,0 +1,1346 @@
+= Bash Compatibility Matrix
+:icons: font
+
+[cols="80%,10*", options="header"]
+|===
+| Feature / Version
+^a|
+3.0
+[small]#^2004-08-03^#
+^a|
+3.1
+[small]#^2005-12-08^#
+^a|
+3.2
+[small]#^2006-10-11^#
+^a|
+4.0
+[small]#^2009-02-20^#
+^a|
+4.1
+[small]#^2009-12-31^#
+^a|
+4.2
+[small]#^2011-02-13^#
+^a|
+4.3
+[small]#^2014-02-26^#
+^a|
+4.4
+[small]#^2016-09-15^#
+^a|
+5.0
+[small]#^2019-01-07^#
+^a|
+5.1
+[small]#^2020-12-07^#
+
+h| `declare -a` (Array)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -A` (Hash)
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -f` (Function)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -g` (Global)
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -i` (Integer)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -l` (Lowercase)
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -r` (Readonly)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -u` (Uppercase)
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `declare -x` (Export)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Empty array is *not* an unset variable
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Operator `+=` (Append)
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Operator `=~` (Regex)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Parameter expansion `${foo,}` (Lowercase)
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Parameter expansion `${foo^}` (Uppercase)
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Parameter expansion `${!f*}` (Partial)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Parameter expansion `${f/p/}` (Partial)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| printf shell escape `printf %q`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| printf timestamp `printf %(%F)T`
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| printf Variable assignment `printf -v`
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| `read -a var` (Array)
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Redirect `&>`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Redirect `\|&`
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `.`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `alias`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `bg`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `bind`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `break`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `builtin`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `cd`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `command`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `compgen`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `complete`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `compopt`
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `continue`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `declare`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `dirs`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `disown`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `echo`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `enable`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `eval`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `exec`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `exit`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `export`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `fc`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `fg`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `getopts`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `hash`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `help`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `history`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `jobs`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `kill`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `let`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `local`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `logout`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `mapfile`
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `popd`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `printf`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `pushd`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `pwd`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `read`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `readarray`
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `readonly`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `return`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `set`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `shift`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `shopt`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `source`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `suspend`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `test`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `times`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `trap`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `type`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `typeset`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `ulimit`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `umask`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `unalias`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `unset`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Builtin `wait`
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `accept`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
+h| Loadable Builtin `basename`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `cut`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
+h| Loadable Builtin `dirname`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `finfo`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
+h| Loadable Builtin `head`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `id`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `ln`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `logname`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `mkdir`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `mkfifo`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
+h| Loadable Builtin `mktemp`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
+h| Loadable Builtin `mypid`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+h| Loadable Builtin `pathchk`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `print`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `printenv`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `push`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `realpath`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `rm`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
+h| Loadable Builtin `rmdir`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `seq`
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `setpgid`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `sleep`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `strftime`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `sync`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `tee`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `truefalse`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+h| Loadable Builtin `tty`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `uname`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `unlink`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+h| Loadable Builtin `whoami`
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+^| icon:check-square[]
+^| icon:check-square[]
+
+|===

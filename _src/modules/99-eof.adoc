@@ -1,0 +1,7 @@
+[[eof]]
+== EOF
+
+[NOTE]
+--
+No Sysadmin was hurt during the making of this presentation!
+--

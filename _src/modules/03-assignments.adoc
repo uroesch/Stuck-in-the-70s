@@ -1,0 +1,104 @@
+[[assignments]]
+== Operation plus equal
+
+[.notes]
+--
+With Bash 3.1 the new assignment operator `+=` has been introduced. 
+It makes the previously cumbersome task of appending or adding content to 
+an already populated variable a lot easier and DRYer.  
+The following examples show the classical way and the new improved way.
+--
+
+=== Integer incrementation
+
+[.notes]
+--
+There is a few ways incrementing integers in bash but the focus is on the `+=` 
+assigment operator.
+--
+
+.Classical way
+[source,bash]
+----
+counter=0
+while true; do
+  counter=`expr ${counter} + 1`   # declare -- counter="1"
+  # [...]
+done
+----
+
+.With `+=` operator
+[source,bash]
+----
+declare -i counter=0
+while true; do
+  counter+=1                      # declare -i counter="1"
+  # [...]
+done
+----
+
+ifdef::backend-revealjs[=== !]
+
+WARNING: Without declaring the variable as an integer the behaviour
+         is not as expected.
+
+[source,bash]
+----
+counter=0
+while true; do
+  counter+=1                      # declare -- counter="01"
+  # [...]
+done
+----
+
+=== Append to string
+
+[.notes]
+--
+The `+=` assigment operator acts differently when a string is
+encountered.
+--
+
+.Classical way
+[source,bash]
+----
+string="foo"
+string="${string}bar"  # declare -- string="foobar"
+----
+
+.With `+=` operator
+[source,bash]
+----
+declare -- string=foo
+string+=bar            # declare -- string="foobar"
+----
+
+=== Push to array 
+
+[.notes]
+--
+Using the `+=` assigment operator with a list or array
+pushes a new value into an array.
+--
+
+.Classical list
+[source,bash]
+----
+list="foo"
+list="${list} bar" # declare -- list="foo bar"
+----
+
+.With `+=` operator
+[source,bash]
+----
+declare -a list=( foo )
+list+=bar         # declare -a list=(foo bar)
+----
+
+=== Summary
+
+The `+=` operator helps with the assignment of existing and brings
+a bit more comfort to the previously wordy and and often times ugly process
+of appending or incrementing numbers. 
+
+WARNING: A `-=` assignment operator does not exist!

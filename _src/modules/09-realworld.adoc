@@ -1,0 +1,76 @@
+[[real-world]]
+== Real World Examples ™
+
+A few examples on how to reduce clutter with examples 
+taken from the Real World ™.
+
+=== The power of read(ing)
+
+
+.Expensive parsing and splitting with awk
+[source,bash]
+----
+info="Joe:Doe:Sysadmin"
+fname=`echo ${info} | awk -F : '{ print $1 }'`   # Joe
+lname=`echo ${info} | awk -F : '{ print $2 }'`   # Doe
+role=`echo ${info} | awk -F : '{ print $3 }'`    # Sysadmin
+----
+
+.read with IFS
+[source,bash]
+----
+declare -- info="Joe:Doe:Sysadmin"
+IFS=: read fname lname role <<< "${info}"
+----
+
+ifdef::backend-revealjs[=== !]
+
+The same but read everything into an array.
+
+.read into array
+[source,bash]
+----
+declare -- info="Joe:Doe:Sysadmin"
+IFS=: read -a person <<< "${info}"
+
+typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")
+----
+
+=== May the case be with you
+
+.Too WET to maintain
+[source,bash]
+----
+if [ ${host} = jp-prod ]; then
+  prod_host ${host}
+elif [ ${host} = ch-prod ]; then
+  prod_host ${host}
+elif [ ${host} = jp-uat ]; then
+  uat_host ${host}
+# [ ... ]
+else
+  dev_host ${host}
+fi
+----
+
+.Better with case 
+[source,bash]
+----
+case ${host} in
+  *-prod) prod_host ${host};;
+  *-uat)  uat_host ${host};;
+  *)      dev_host ${host};;
+esac
+----
+
+=== Poor man's Ansible
+
+Execute a localy defined function on a remote machine without
+first copying the code. 
+
+[source,bash]
+----
+function bootstrap() { config_host; hostname; }
+
+ssh ch-dev.acme.com "declare -f bootstrap; bootstrap" 
+----

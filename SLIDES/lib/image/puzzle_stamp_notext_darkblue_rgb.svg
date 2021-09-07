@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="80.028778"
+   height="79.999466"
+   viewBox="0 0 80.028778 79.999466"
+   version="1.1"
+   id="svg1867"
+   sodipodi:docname="puzzle_stamp_notext_darkblue_rgb.svg"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)">
+  <metadata
+     id="metadata1871">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>logo_tagline</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     id="namedview1869"
+     showgrid="false"
+     inkscape:zoom="2.0335381"
+     inkscape:cx="187.86169"
+     inkscape:cy="36.918052"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1867"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <!-- Generator: Sketch 3.0.3 (7891) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title1857">logo_tagline</title>
+  <desc
+     id="desc1859">Created with Sketch.</desc>
+  <defs
+     id="defs1861" />
+  <g
+     id="Page-1"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     sketch:type="MSPage"
+     transform="translate(2.68875e-4,-0.72851561)">
+    <g
+       id="logo_tagline"
+       sketch:type="MSLayerGroup"
+       transform="translate(0,1)">
+      <path
+         id="Fill-1"
+         d="M 40.013672,0.72851562 C 29.77304,0.72833924 19.533273,4.6316238 11.720703,12.441406 c -15.6279625,15.621682 -15.6279625,40.948631 0,56.570313 15.627257,15.621681 40.96134,15.621681 56.587891,0 15.625845,-15.621682 15.627257,-40.94722 0,-56.570313 C 60.495671,4.6323293 50.254303,0.72869201 40.013672,0.72851562 Z M 24.595703,22.314453 h 19.679688 l -1.314453,3.921875 c 0,0 1.603093,-3.921875 12.449218,-3.921875 0,0 11.118948,0.0487 9.8125,3.943359 -1.30433,3.892545 -5.498047,15.572266 -5.498047,15.572266 -1.403143,3.806467 -9.613672,3.77348 -20.759765,3.806641 0,0 7.202486,-1.017566 9.283203,-5.03711 2.082128,-4.017427 4.535156,-12.158203 4.535156,-12.158203 -11.088922,-0.0014 -12.078125,3.88086 -12.078125,3.88086 0,0 -7.008552,19.590659 -9.507812,26.818359 -19.418849,0 -16.314454,-9.587891 -16.314454,-9.587891 z"
+         transform="translate(0,-1)"
+         style="fill:#003870;fill-opacity:1"
+         sodipodi:nodetypes="sccccsccccccccccccc" />
+    </g>
+  </g>
+</svg>

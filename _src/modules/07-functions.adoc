@@ -1,0 +1,82 @@
+[[functions]]
+== Funky, funky, functions!
+
+[.notes]
+--
+Function names are quite restrictive in many languages. For instance
+minuses `-` are not permitted or special characters can not be used.
+
+While this is true for traditional shell scripts as well Bash has 
+more relaxed rules. 
+
+Let's dive in!
+--
+
+=== Special charachters 
+
+With the exception of a few reserved charachters such as `$`, `|`, 
+`(` and `{` among others pretty much everything else works. 
+
+[source,bash]
+----
+function @() { echo '@'; } 
+@                                        # @ 
+function /() { echo '/'; } 
+/                                        # / 
+function -() { echo '-'; } 
+-                                        # - 
+function :() { echo ':'; } 
+:                                        # : 
+function ü() { echo 'ü'; } 
+ü                                        # ü
+----
+
+ifdef::backend-revealjs[=== !]
+
+This opens possibilities of creating prefixes or fake namespaces
+for functions. Pretty useful for sourced files and libraries.
+
+.Functions with faux namespaces
+[source,bash]
+----
+function funky() {
+  # [ ... ]
+}
+
+function test::funky() {
+  # [ ... ]
+}
+
+funky            # execute funky
+test::funky      # test funky function
+----
+
+
+=== Function within functions
+
+It it is even possible to place functions within functions.
+Unfortunately there they are still accessible globally. 
+
+[.notes]
+--
+There is a usecase for this scenario which we get to later.
+But with the `local` keyword the scope can be limited.
+--
+
+[source,bash]
+----
+function parent() {
+  function @child() {
+    # [ ... ]
+  }
+  @child
+  # [ ... ] 
+  @child
+}
+----
+
+=== Summary
+
+Surprisingly bash functions can be creatively named and have fewer restrictions
+than most other scripting languages. Caution is advised when using special
+characters tho. I don't think many bash scripters use them.

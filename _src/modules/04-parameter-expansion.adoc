@@ -1,0 +1,106 @@
+[[parameter-expansion]]
+== Substitution Revolution
+
+[.notes]
+--
+Some may know the classical parameter expansion from bourne shell such as 
+`${parameter:N,N}` or `${parameter:-default}` or the ones from Korn shell
+`${parameter%pattern}` or `${parameter#pattern}`. But bash has a few of 
+its own. We look at three of them. 
+--
+
+=== Modify case
+
+There are two basic modes, the first is to convert the case 
+of the first letter. The second is to convert the whole string.
+
+[source,bash]
+----
+declare -- to_lower="ALL CAPS"
+echo ${to_lower,}               # aLL CAPS   
+echo ${to_lower,,}              # all caps
+
+declare -- to_upper="all lower"
+echo ${to_upper^}               # All lower
+echo ${to_upper^^}              # ALL LOWER
+----
+
+NOTE: Requires bash >= 4.0
+
+ifdef::backend-revealjs[=== !]
+
+There is also the option of only matching a pattern to 
+adjust the case.
+
+[source,bash]
+----
+declare -- fruits="banana apple pear"
+echo ${fruits^a}                # banana apple pear
+echo ${fruits^[bp]}             # Banana apple pear
+echo ${fruits^^a}               # bAnAnA Apple peAr
+echo ${fruits^^[ae]}            # bAnAnA ApplE pEAr
+----
+
+NOTE: Requires bash >= 4.0
+
+ifdef::backend-revealjs[=== !]
+
+.Real world example
+[source,bash]
+----
+if [ `echo ${string1} | tr "[A-Z]" "[a-z]"` = "${string2}" ]; then  
+  # [...] 
+fi
+----
+
+.With parameter expansion
+[source,bash]
+----
+if [[ ${string1,,} == ${string2} ]]; then  
+  # [...]
+fi
+----
+
+
+=== Substituion
+
+This one really gets me! I almost never see `${parameter/pattern/}` 
+substitutions in the wild. And is has been around a long time. 
+
+[.notes]
+--
+Given it is not as powerful as `sed` but for most use cases it is more than 
+sufficuent. 
+--
+
+[source,bash]
+----
+declare -- string="lagoon racoon"
+echo ${string/oo/u}             # lagun racoon
+echo ${string//oo/u}            # lagun racun
+----
+
+ifdef::backend-revealjs[=== !]
+
+.Real world example
+[source,bash]
+----
+string="lagoon racoon" 
+echo ${string} | sed 's/oo/u/g' # lagun racun
+----
+
+.With parameter expansion
+[source,bash]
+----
+declare -- string="lagoon racoon"
+echo ${string//oo/u}             # lagun racun
+----
+
+=== Summary
+
+Parameter expansion in shell scripts can be a bit cryptic at first but it 
+is definitely a lot faster then to run a sub shell for every little change
+made to a small string.
+
+There are many more expansions available but the examples here are bash specific 
+and won't work in the predecessor shells such as Bourne or Korn shell.

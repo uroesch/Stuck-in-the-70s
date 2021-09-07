@@ -1,0 +1,103 @@
+[[foobar]]
+== I do declare!
+
+[.notes]
+--
+Variables in shell scripts are typeless, quite a few popular scripting
+languages do the same and are loosely typed. With `declare` certain
+attributes are defined which can help reduce code or make the script
+more predictable.
+--
+
+=== Integer
+
+Ensure variable only holds integers.
+
+[source,bash]
+----
+declare -i int=1
+
+int=string    # bash: string: unbound variable
+
+int=2         # declare -i int="2"
+----
+
+=== Readonly
+
+Define a variable as a constant.
+
+[source,bash]
+----
+declare -r readonly=set-in-stone
+
+readonly=change   # bash: readonly: readonly variable
+----
+
+=== Lowercase
+
+The content of the variable is converted to lowercase.
+
+[source,bash]
+----
+declare -l lower=LOWER
+
+echo ${lower}    # lower
+----
+
+NOTE: Requires bash >= 4.0
+
+
+=== Uppercase
+
+The content of the variable is converted to uppercase.
+
+[source,bash]
+----
+declare -u upper=upper
+
+echo ${upper}    # UPPER
+----
+
+=== Arrays
+
+The content of the variable is an array.
+
+[source,bash]
+----
+declare -a array=( 1 2 3 )
+
+typeset -p array  # declare -a array=([0]="1" [1]="2" [2]="3" )
+
+array=foo
+
+typeset -p array  # declare -a array=([0]="foo" [1]="2" [2]="3")
+----
+
+=== Associative Arrays
+
+The content of the variable is an associative array.
+
+[source,bash]
+----
+declare -A hash=( [a]=foo [b]=bar )
+
+typeset -p hash # declare -A hash=([b]="bar" [a]="foo" )
+
+hash=c
+
+typeset -p hash # declare -A hash=([0]="c" [b]="bar" [a]="foo" )
+
+hash+=([c]=foo)
+
+typeset -p hash # declare -A hash=([c]="foo" [b]="bar" [a]="foo" )
+----
+
+NOTE: Requires bash >= 4.0
+
+=== Summary
+
+There are few other switches to `declare` and the certainly can be combined.
+To create a readonly array use `declare -ra` for instance.
+
+Using `declare` helps narrowing the scope of the values a variable can hold.
+This makes the script more predictable!

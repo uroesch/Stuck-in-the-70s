@@ -1,0 +1,106 @@
+- [x] Prevent human errors
+  - [x] Use set -o xxxxxx
+
+- [x]  Use declare 
+  - [x] Readonly -r 
+  - [x] Uppercase -u
+  - [x] Lowercase -l
+  - [x] Integers -i
+  - [x] Array -a
+  - [x] Hash -A
+  * Out of scope
+    * Function -f 
+    * Nameref -n -> mention
+    * Trace -t -> mention
+    * Export -x -> mention
+    * Globals -g 
+
+- [x] assignments
+  * Use += attention -= does not work!
+    ```
+    declare -i foo=1
+    foo+=1             # declare -i foo=2
+    ``` 
+    ```
+    declare foo=foo
+    foo+=bar           # declare -- foo=foobar
+    ``` 
+
+- [x] Use parameter subtitutions
+
+  - [x] Upper & lower
+    ```
+    foo=bar
+    echo ${foo^^}; # BAR
+    foo=BAR
+    echo ${foo,,}; # bar
+    ```
+  - [x] Regex
+
+   
+
+- [x] Datastructures
+  * Use Arrays
+    ``` 
+    list="foo"
+    list="${list} bar"
+    ```
+
+    ```
+    declare -a list=( foo )
+    list+=bar 
+    ```
+  * Use Hashes?
+  * substitutions with arrays
+    * Prefix ssh options with array
+    ```
+    declare -a ssh_options=( BatchMode=yes User=foobar )
+    echo ${ssh_options[@]/#/-o /} # -o BatchMode=yes -o User=foobar
+    ```
+
+- [x] Conditionals 
+  - [x] Use [[ instead of [ 
+    * if [ "x123" = "x${foo}" ]; then ... fi
+    * if [[ 123 == ${foo} ]]; then ... fi
+  - [ ] Use (( for numeric conditionals
+    * if [[ 123 -gt ${foo} ]]; then ... fi 
+    * if (( 123 > ${foo} )); then ... fi
+  - [ ] Use regex comparsion -> BASH_REMATCH?
+    * if echo ${foo} | grep -q bar; then ... fi
+    * if [[ ${foo} =~ bar ]]; then ... fi
+  * Use case!
+
+- [x] Functions
+  - [x]  Function names
+    - [x] namespaces double colon names for libraries
+    - [x] function ---
+  * Functions within functions
+  - [ ] On hold
+    * Use local
+    * Use shift;
+    * Name your variables!
+
+* Replace Shell commands
+  * With subtitions read IFS=: 
+  * Lowercase 
+  * readarray?
+
+* Use printf!
+  * Don't loop use printf
+    ```
+    for i in foo bar batz; do 
+       echo ${i}
+    done
+    ```
+    ```
+    printf "%s\n" foo bar batz
+    ```
+  * sprintf anyone?
+    ```
+    printf -v foo "%s\n" foo bar batz
+    ```
+   
+
+* Poor man's ansible 
+  * Fun fact declare -f with existing script wrapped in function. Function in function, declare, ssh:q
+

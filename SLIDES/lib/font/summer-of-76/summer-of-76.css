@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Summer of 76';
+    src: url('SummerOf76-New.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Summer of 76 Solid';
+    src: url('SummerOf76-New-Solid.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}

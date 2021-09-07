@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="76.672234mm"
+   height="36mm"
+   viewBox="0 0 76.672236 36"
+   version="1.1"
+   id="svg873"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
+   sodipodi:docname="puzzle-background-bottom-right.svg">
+  <defs
+     id="defs867" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.23055556"
+     inkscape:cx="144.89241"
+     inkscape:cy="68.03151"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1515"
+     inkscape:window-height="752"
+     inkscape:window-x="122"
+     inkscape:window-y="114"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata870">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-67.497214,-130.16666)">
+    <g
+       id="g913"
+       transform="matrix(0.92583082,0,0,0.92583082,-50.609228,-108.05259)">
+      <path
+         id="rect881-3"
+         style="fill:#3d9ecc;fill-opacity:1;stroke-width:0.215253"
+         d="m 190.94059,276.74521 19.44199,-19.44199 v 38.88398 z"
+         sodipodi:nodetypes="cccc" />
+      <path
+         id="path883-6"
+         style="fill:#369096;fill-opacity:1;stroke-width:0.154976"
+         d="m 141.56566,282.1896 -13.9976,13.9976 c 8.94141,3e-5 17.88281,0 26.82421,0 l 13.97382,-13.97384 h -26.80043 z" />
+      <path
+         id="path885-7"
+         style="fill:#47b8b2;fill-opacity:1;stroke-width:0.30995"
+         d="m 154.39227,296.1872 27.99516,-27.99516 27.99515,27.99516 z"
+         sodipodi:nodetypes="cccc" />
+    </g>
+  </g>
+</svg>

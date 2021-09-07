@@ -1,0 +1,6 @@
+[submodule "_themes/tutorial"]
+	path = _themes/tutorial
+	url = https://github.com/uroesch/asciidoctor-pdf-tutorial-theme
+[submodule "_themes/readthedocs"]
+	path = _themes/readthedocs
+	url = https://github.com/uroesch/asciidoctor-readthedocs-theme

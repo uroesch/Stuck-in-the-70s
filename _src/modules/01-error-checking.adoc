@@ -1,0 +1,158 @@
+[[error-checks]]
+== Errors, Shmerrors
+
+[.notes]
+--
+Shell scripts are amazingly forgiving when it comes to bad coding practices.
+Virtually every variable is globally available and can be used without being
+previously declared.
+
+Further, fatal errors in other languages result in the termination of the
+script, not so in a classic shell script. Even after a problem the script
+jugs along as if everything is dandy.
+--
+
+=== set -o errexit
+
+[.notes]
+--
+The scripts I usually encounter do not exit on error. With this option set
+the script is terminated when an error occurs.
+--
+
+.Script without `errexit` option
+[source,bash]
+----
+#!/usr/bin/env bash
+
+false
+echo 'Still alive?' # Still alive?; exit rc 0
+----
+
+.Script with `errexit` option
+[source,bash]
+----
+#!/usr/bin/env bash
+
+set -o errexit
+
+false               # exit rc 1 
+echo 'Still alive?'
+----
+
+ifdef::backend-revealjs[=== !]
+
+To prevent exit on error, append `|| :` after the command.
+
+.Prevent exit on error
+[source,bash]
+----
+#!/usr/bin/env bash
+
+set -o errexit
+
+false || :
+echo 'Still alive?' # Still alive?; exit rc 0
+----
+
+
+=== set -o nounset
+
+[.notes]
+--
+Imagine a scenario where you remove a directory within a script where the last
+part of the path is provided by a variable. For one reason or another said variable
+is not defined and instead of the target directory you remove a lot more than you
+bargained for. 
+
+`rm -rf /home/jdoe/${temp_dir}` 
+
+But don't dispair with `set -o nounset` this can be prevented.
+--
+
+.Script without `nounset` option
+[source,bash]
+----
+#!/usr/bin/env bash
+
+rm -rf /home/jdoe/${temp_dir} # rm -rf /home/jdoe/ 
+----
+
+.Script with `nounset` option
+[source,bash]
+----
+#!/usr/bin/env bash
+
+set -o nounset
+
+rm -rf /home/jdoe/${temp_dir} # bash: temp_dir: unbound variable; exit rc 1
+----
+
+=== set -o pipefail
+
+[.notes]
+--
+When working with pipes per default only the right most command in the chain
+is considered and checked for errors. 
+
+With `pipefail` each command within the pipe construct is evaluted. 
+This is especially useful for `awk` commands which generally return and
+exit status of `0`.
+--
+
+.Script without `pipefail` option 
+[source,bash]
+----
+#!/usr/bin/env bash
+
+find /fake-dir | awk '{print $1}' # exit rc 0
+----
+
+.Script with `pipefail` option
+[source,bash]
+----
+#!/usr/bin/env bash
+
+set -o pipefail
+
+find /fake-dir | awk '{print $1}' # exit rc 1
+----
+
+=== Summary
+
+Always use the option triplet `errexit`, `nounset` and `pipefail` in your scripts!
+
+[.notes]
+--
+When refactoring an existing script add them first to see how far down the rabbit
+whole the journey goes. If the script runs without a hitch the code might not
+be as bad as assumed.
+--
+
+[source,bash]
+----
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+[...]
+----
+
+ifdef::backend-revealjs[=== !]
+
+To disable the option for a certain block or command use `+o` instead of `-o`.
+
+[source,bash]
+----
+[...]
+
+# switch off exit on error
+set +o errexit
+false
+# switch it back on
+set -o errexit
+
+[...]
+----

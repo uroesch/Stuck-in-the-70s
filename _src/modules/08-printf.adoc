@@ -1,0 +1,81 @@
+[[printf]]
+== What the printf?
+
+[.notes]
+--
+The builtin `printf` function comes with a few differences compared
+to the ones found in the common scripting languages. 
+
+Here we have a look how we can use `printf` a log smarter!
+--
+
+=== Don't loop, printf!
+
+The bash `printf` can be used instead o loop for printing as it
+prints each additional argument not unlike a loop.
+
+.Print fruit loop :) 
+[source,bash]
+----
+declare -a fruit=( banana apple pear )
+for f in ${fruit[@]}; do echo ${f}; done    # banana\napple\npear
+----
+
+.Printf it!
+[source,bash]
+----
+declare -a fruit=( banana apple pear )
+printf "%s\n" "${fruit[@]}"                 # banana\napple\npear
+----
+
+=== Straight lines
+
+Don't manually write out lines use `printf`!
+
+[source,bash]
+----
+printf "%0.1s" -{1..16}         # ----------------
+----
+
+=== sprintf anyone?
+
+One can even emulate the `sprintf` command by using the `-v` 
+switch.
+
+[source,bash]
+----
+printf -v line "%0.1s" -{1..16}
+echo ${line}                    # ----------------
+----
+
+NOTE: Requires bash >= 3.1
+
+
+=== Escape plan!
+
+With the `%q` placeholder `printf` provides a shell escaping routine.
+
+[source,bash]
+----
+printf "%q" 'cat foo | grep "foo bar"' 
+# cat\ foo\ \|\ grep\ \"foo\ bar\"
+----
+
+=== What does the clock say?
+
+Use `printf` instead of the `date` command to convert
+an Unix epoch timestamp to a human readable format.
+
+[source,bash]
+----
+printf "%(%Y-%m-%d)T\n" 1515151515
+2018-01-05
+----
+
+NOTE: Requires bash >= 4.2
+
+=== Summary
+
+IMHO, one of most underused builtins in bash scripts is printf.
+It is very versatile and can help reduce code and complexity if used
+appropriately.

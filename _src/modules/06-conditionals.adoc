@@ -1,0 +1,111 @@
+[[conditionals]]
+== Perfect condition
+
+[.notes]
+--
+Conditional statements in classical shell script have a few
+shortcommings. For backward comptibility bash understands
+the single brackets `[ ... ]` but are a couple more ways
+to enclose conditional statements.
+
+Let's dive in.
+--
+
+=== Double square brackets
+
+Double square brackets are more forgiving when 
+it comes to dealing with empty strings in a comparison. 
+
+ifdef::backend-revealjs[=== !]
+
+.Classical shell script condition
+[source,bash]
+----
+foo=
+[ ${foo} = foo ]      # bash: [: =: unary operator expected
+----
+
+Effective the above conditional statement is expaned as
+`[ = foo ]` because the variable `foo` is empty.
+There are two common ways to prevent the error:
+
+.Classical shell script condition workaround
+[source,bash]
+----
+foo=
+[ "${foo}" = "foo" ]  # exit rc 1
+[ x${foo} = xfoo ]    # exit rc 1
+----
+
+ifdef::backend-revealjs[=== !]
+
+Korn shell introduced the more robuts `[[` which does not
+suffer the same limitations. 
+
+.Korn shell style double square brackets
+[source,bash]
+----
+declare -- foo=
+[[ ${foo} == foo ]]   # exit rc 1
+----
+
+[.notes]
+--
+Korn was initially released in 1983. `bash` and `zsh` among other
+shells adapted the double square bracket style conditionals.
+Still to this day there I mostly encounter single square brackets all
+over the place. Hence the question "Are we stuck in the 70's?".
+
+And while the double square brackets are not POSIx compliant, does
+it really matter if you are writing a bash script?
+--
+
+//// 
+=== Double parentheses
+
+TBD
+
+.General substitutions
+[source,bash]
+----
+declare -i number=1
+(( ${number} > 0 ))           # exit rc 0
+----
+////
+
+=== Regex comparision
+
+Bash has also a regex operator `=~` for matching strings.
+This often overlooked feature can save you lots of typing. 
+
+[.notes]
+--
+More importantly string comparsions within bash are more
+performant as no sub shell is required for the comparison.
+--
+
+.Classical shell string match
+[source,bash]
+----
+string=foobar
+if echo ${string} | grep -q '[Bb]ar'; then
+  # [ ... ]   
+fi
+----
+
+.Bash style regex
+[source,bash]
+----
+declare -- string=foobar
+if [[ ${string} =~ [Bb]ar ]]; then
+  # [ ... ]
+fi
+----
+
+=== Summary
+
+These are but a few small examples creating "perfect conditions"
+for your bash scripts. Although they are not POSIX compatible
+the fact that `ksh`, `zsh` and `bash` among other implement them
+makes them virtually portable.  
+

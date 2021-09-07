@@ -1,0 +1,65 @@
+[[arrays]]
+== ( hip hip )
+
+[.notes]
+--
+Arrays have been around in bash for quite some time but the encounters
+in the real world are few and far between. 
+
+Combined with the parameter expansion they become a powerful asset
+DRYing up a WET script.
+
+Here a few examples.
+--
+
+=== Modify case
+
+Combining bash arrays with the upper case parameter expansion is mighty
+powerful. Let's see how it's done.
+
+
+[source,bash]
+----
+declare -a fruit=( banana apple pear )
+echo ${fruit[@]^}               # Banana Apple Pear
+echo ${fruit[@]^^}              # BANANA APPLE PEAR
+echo ${fruit[@]^a}              # banana Apple pear
+echo ${fruit[@]^[bp]}           # Banana apple Pear
+echo ${fruit[@]^^a}             # bAnAnA Apple peAr
+echo ${fruit[@]^^[ae]}          # bAnAnA ApplE pEAr
+----
+
+NOTE: Requires bash >= 4.0
+
+=== Substitution
+
+Applying substitution to each element of an array can also be done.
+Here a few examples.
+
+.General substitutions
+[source,bash]
+----
+declare -a array=( lagoon racoon )
+echo ${array[@]/o/u}          # laguon racuon
+echo ${array[@]//o/u}         # laguun racuun
+----
+
+.Prefix substitutions
+[source,bash]
+----
+declare -a sshopts=( BatchMode=yes User=foobar )
+echo ${sshopts[@]/#/-o }      # -o BatchMode=yes -o User=foobar
+----
+
+.Suffix substitutions
+[source,bash]
+----
+declare -a fruits=( banana apple pear )
+echo ${fruits[@]/%/,}         # banana, apple, pear,
+----
+
+=== Summary
+
+Parameter expansion combined with bash arrays allows to make volatile changes
+to a list of values at the time of echoing. No `sed`, `tr` and `awk` constructs 
+and excessive looping are required.
