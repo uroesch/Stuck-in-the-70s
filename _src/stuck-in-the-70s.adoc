@@ -1,4 +1,4 @@
-= Stuck in the 70's?: Sanitize bash script from the disco era
+= Stuck in the 70's?: Sanitize shell script from the disco era
 :author_1: Urs Roesch
 :email_1: roesch@puzzle.ch
 :firstname_1: Urs
