@@ -1,4 +1,4 @@
-= Stuck in the 70's?; Sanitize shell script from the disco era
+= Stuck in the 70's?: Sanitize shell script from the disco era
 
 This presentation is diving into bash features I do not usually encounter in the
 wild. As a matter of fact most shell scripts are written without taking advantage
