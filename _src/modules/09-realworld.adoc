@@ -36,6 +36,71 @@ IFS=: read -a person <<< "${info}"
 typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")
 ----
 
+[.notes]
+--
+
+Splitting field seperated data into variables is usually down with `awk` in shell
+scripts. And `awk` is supberb tools when working on large data sets. However simply
+spliting into shell variables is a performance killer! 
+
+.Example script `read-list.sh`
+[source,bash]
+----
+#!/usr/bin/env bash 
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+declare -r TITLE="\nSplit string to variables with '%s' a 100 times\n"
+declare -r LIST="root:T0pS3cr3t!:0:0:root:/root:/bin/bash"
+
+function awk-loop() {
+  printf "${TITLE}" 'awk -F : ...'
+  for i in {0..100}; do
+    login=$(echo ${LIST} | awk -F : '{ print $1 }')
+    pw=$(echo ${LIST} | awk -F : '{ print $2 }')
+    uid=$(echo ${LIST} | awk -F : '{ print $3 }')
+    gid=$(echo ${LIST} | awk -F : '{ print $4 }')
+    gecos=$(echo ${LIST} | awk -F : '{ print $5 }')
+    home=$(echo ${LIST} | awk -F : '{ print $6 }')
+    shell=$(echo ${LIST} | awk -F : '{ print $7 }')
+  done
+}
+
+function read-loop() {
+  printf "${TITLE}" 'IFS=: read ...' 
+  for i in {0..100}; do
+    IFS=: read login pw uid gid gecos home shell <<< "${LIST}"
+  done
+}
+
+time awk-loop
+time read-loop
+----
+
+[source,console]
+----
+$ bash read-list.sh 
+
+Split string to variables with 'awk -F : ...' a 100 times
+
+real    0m1.162s <1>
+user    0m1.086s
+sys     0m0.293s
+
+Split string to variables with 'IFS=: read ...' a 100 times
+
+real    0m0.002s <2>
+user    0m0.001s
+sys     0m0.002s
+----
+<1> Splitting with `awk` is about 580 times slower!
+    Although there are only 100 iterrations `awk` is
+    called 700 times.
+<2> Barely noticable the time used with the builtin.
+--
+
 === May the case be with you
 
 .Too WET to maintain
@@ -72,5 +137,66 @@ first copying the code.
 ----
 function bootstrap() { config_host; hostname; }
 
-ssh ch-dev.acme.com "declare -f bootstrap; bootstrap" 
+ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap" 
 ----
+
+
+[.notes]
+--
+It is hard to imagine something concreate with the above example hence a small 
+example to show how it works. In the below example the script is adding a new
+SSH public key to the target user's authorized_keys file. But only if the key
+is not alreay exisiting.
+
+.Example script `rex-add_ssh_key.sh`
+[source,bash]
+----
+#!/usr/bin/env bash 
+
+function add_ssh_key() {
+  set -o errexit
+  set -o nounset
+  set -o pipefail
+
+  declare -r SSH_TYPE=${1}; shift;
+  declare -r SSH_KEY=${1}; shift;
+  declare -r SSH_COMMENT=${1}; shift;
+  declare -r AUTH_KEYS=${HOME}/.ssh/authorized_keys
+  
+  function key_already_in_place() {
+    grep -q ${SSH_KEY} ${AUTH_KEYS}
+  }
+
+  function add_key() {
+    key_already_in_place && { 
+      echo "Key already exists in ${AUTH_KEYS}";
+      return 0;
+    }
+    printf "%s %s %s\n" \
+      ${SSH_TYPE} \
+      ${SSH_KEY} \
+      ${SSH_COMMENT} \
+      >> ${AUTH_KEYS}
+    echo "Key succesfully added to ${AUTH_KEYS}"
+  }
+  add_key
+}
+
+ssh localhost \
+  "$(declare -f add_ssh_key);" \
+  "add_ssh_key ssh-ed25519 AAAAC3N..7mG testkey"
+----
+
+.Results from running above script
+[source,console]
+----
+$ bash rex-add_ssh_key.sh 
+Key succesfully added to /home/test/.ssh/authorized_keys <1>
+
+$ bash rex-add_ssh_key.sh 
+Key already exists in /home/test/.ssh/authorized_keys <2>
+----
+<1> Running the first time the key is added
+<2> Running the second time the key is already present and no
+    action is taken.
+--

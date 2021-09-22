@@ -62,4 +62,8 @@ include::modules/09-realworld.adoc[]
 
 <<<
 
+include::modules/98-feature-matrix.adoc[]
+
+<<<
+
 include::modules/99-eof.adoc[]

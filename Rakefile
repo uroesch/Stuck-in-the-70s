@@ -203,20 +203,12 @@ rule ".html" => ->(f){find_adoc(f)} do |t|
   # questions only
   sh %(#{asciidoctor} #{stylesheets} #{html_options} ) +
      %("#{t.source}" -o "#{t.name}")
-  # with subversion
-  sh %(#{asciidoctor} #{stylesheets} #{html_options} ) +
-     %(-a with-subversion ) +
-     %("#{t.source}" -o "#{t.name.pathmap("%X-with-subversion.html")}")
 end
 
 rule ".pdf" => ->(f){find_adoc(f)} do |t|
   # questions only
   sh %(#{asciidoctor_pdf} --trace #{stylesheets} #{pdf_options} ) +
      %("#{t.source}" -o "#{t.name}")
-  # with subversion
-  sh %(#{asciidoctor_pdf} --trace #{stylesheets} #{pdf_options} ) +
-     %(-a with-subversion ) +
-     %("#{t.source}" -o "#{t.name.pathmap("%X-with-subversion.pdf")}")
 end
 
 rule ".svg" => ->(f){find_graphics(f)} do |t|

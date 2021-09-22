@@ -1,5 +1,9 @@
 #!/usr/bin/env bash 
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
 declare -r TITLE="\nSubstitute 'o' for 'u' in string with '%s' a 1000 times\n"
 declare -r STRING="lagoon racoon spoon loon"
 

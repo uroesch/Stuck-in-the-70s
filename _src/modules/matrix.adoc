@@ -83,6 +83,18 @@ h| `declare -g` (Global)
 ^| icon:check-square[]
 ^| icon:check-square[]
 
+h| `declare -I` (Export)
+|
+|
+|
+|
+|
+|
+|
+|
+|
+^| icon:check-square[]
+
 h| `declare -i` (Integer)
 ^| icon:check-square[]
 ^| icon:check-square[]
@@ -1115,18 +1127,6 @@ h| Loadable Builtin `mktemp`
 |
 ^| icon:check-square[]
 
-h| Loadable Builtin `mypid`
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-
 h| Loadable Builtin `pathchk`
 |
 |
@@ -1282,18 +1282,6 @@ h| Loadable Builtin `tee`
 ^| icon:check-square[]
 ^| icon:check-square[]
 ^| icon:check-square[]
-
-h| Loadable Builtin `truefalse`
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
 
 h| Loadable Builtin `tty`
 |

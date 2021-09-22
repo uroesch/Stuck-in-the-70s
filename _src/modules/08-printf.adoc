@@ -37,9 +37,41 @@ Don't manually write out lines use `printf`!
 printf "%0.1s" -{1..16}         # ----------------
 ----
 
+[.notes]
+--
+Packing the above into a function and calling it `-----` can make
+the source code more readable but probably confuses the casual
+code reviewer.
+
+.Example script `pretty-lines.sh`
+[source,bash]
+----
+#!/usr/bin/env bash 
+
+function -----() {
+  printf "%0.1s" -{1..16} $'\n'
+}
+
+-----
+echo "Title"
+-----
+
+----
+
+.Result
+[source,console]
+----
+$ bash pretty-lines.sh
+----------------
+Title
+----------------
+----
+
+--
+
 === sprintf anyone?
 
-One can even emulate the `sprintf` command by using the `-v` 
+One can even emulate the `sprintf` function by using the `-v` 
 switch.
 
 [source,bash]

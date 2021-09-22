@@ -30,7 +30,7 @@ declare -a LOADABLE_BUILTINS=(
   mkdir
   mkfifo
   mktemp
-  mypid
+#  mypid
   pathchk
   print
   printenv
@@ -44,7 +44,7 @@ declare -a LOADABLE_BUILTINS=(
   strftime
   sync
   tee
-  truefalse
+#  truefalse
   tty
   uname
   unlink
@@ -124,6 +124,7 @@ declare -A TEST=(
 ##  ['declare -t (trace)']='declare -r foo'
   ['`declare -u` (Uppercase)']='declare -u foo=upper'
   ['`declare -x` (Export)']='declare -x foo=export'
+  ['`declare -I` (Export)']='declare -I foo=export'
 
   ['Operator `+=` (Append)']='foo=foo; foo+=bar'
   ['Operator `=~` (Regex)']='[[ foo =~ foo ]]'

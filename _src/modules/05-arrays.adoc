@@ -51,12 +51,22 @@ declare -a sshopts=( BatchMode=yes User=foobar )
 echo ${sshopts[@]/#/-o }      # -o BatchMode=yes -o User=foobar
 ----
 
-.Suffix substitutions
+ifdef::backend-revealjs[=== !]
+
+.Append suffix
 [source,bash]
 ----
 declare -a fruits=( banana apple pear )
 echo ${fruits[@]/%/,}         # banana, apple, pear,
 ----
+
+.Remove suffix
+[source,bash]
+----
+declare -a fruits=( bananas apples pears )
+echo ${fruits[@]/%s/}         # banana apple pear
+----
+
 
 === Summary
 

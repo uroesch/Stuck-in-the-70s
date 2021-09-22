@@ -6,7 +6,7 @@
 
 [[why-bash]]
 == Why bash?
-As part of my work I encounter many shell scripts which are very poorly written
+As part of my work I encounter many shell scripts which are poorly written
 but are essential for the infrastructure to function properly. 
 
 Most of the time the stake holders aren't sufficiently trained to use a higher
@@ -17,15 +17,15 @@ all stake holders without creating high hurdles for entry.
 
 [.notes]
 --
-So far in my professional career I many times encountered the magical script 
+Many times during my professional career I encountered the magical script 
 written by a former employee who left years ago. Said script was written in an
-obscure language that was all the hype at the time but it star has since faded.
+obscure language that was all the hype at the time but its star has faded since.
 No one in the team has the time or is willing learn the language, port it to
 a more common language or they are simply too afraid of touching the code.
 
-I'm sure many have experienced similar situations. Hence this presentation
-trying to introduce concepts that introduce some modern concepts to a very
-old language.
+I'm sure many have experienced similar situations. This presentation is an
+introduction to modern `bash` script concepts to help sanitize old shell scripts 
+in need of a bit polish.
 --
 
 [[target-audience]]
@@ -37,4 +37,3 @@ this presentation is for you.
 
 NOTE: A basic understanding of programming in general and shell scripting
       in particular is assumed.
-
