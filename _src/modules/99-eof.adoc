@@ -1,3 +1,4 @@
+ifdef::backend-revealjs[]
 [[eof]]
 == EOF
 
@@ -5,3 +6,4 @@
 --
 No Sysadmin was hurt during the making of this presentation!
 --
+endif::backend-revealjs[]

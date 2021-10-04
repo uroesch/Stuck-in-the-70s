@@ -5,13 +5,13 @@
 --
 Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With `declare` certain
-attributes are defined which can help reduce code or make the script
-more predictable.
+attributes can bes defined to make a script more predictable and
+sometimes cut down on conversion logic.
 --
 
 === Integer
 
-Ensure variable only holds integers.
+Ensure the variable only holds integers.
 
 [source,bash]
 ----

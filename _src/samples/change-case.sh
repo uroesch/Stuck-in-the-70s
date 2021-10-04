@@ -1,5 +1,9 @@
 #!/usr/bin/env bash 
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
 declare -r TITLE="\nConvert string to lower case with '%s' a 1000 times\n"
 declare -r STRING="UPPER-lower"
 

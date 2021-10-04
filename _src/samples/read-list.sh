@@ -1,5 +1,9 @@
 #!/usr/bin/env bash 
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
 declare -r TITLE="\nSplit string to variables with '%s' a 100 times\n"
 declare -r LIST="root:T0pS3cr3t!:0:0:root:/root:/bin/bash"
 

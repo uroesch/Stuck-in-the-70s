@@ -65,12 +65,12 @@ fi
 === Substituion
 
 This one really gets me! I almost never see `${parameter/pattern/}` 
-substitutions in the wild. And is has been around a long time. 
+substitutions in the wild. And is has been around for ages. 
 
 [.notes]
 --
 Given it is not as powerful as `sed` but for most use cases it is more than 
-sufficuent. 
+sufficuent.
 --
 
 [source,bash]
@@ -95,6 +95,65 @@ echo ${string} | sed 's/oo/u/g' # lagun racun
 declare -- string="lagoon racoon"
 echo ${string//oo/u}             # lagun racun
 ----
+
+[.notes]
+--
+
+The script below loops 1000 times and does a string substition with `sed` and then via 
+the `bash` builtin substituion. The result is quite stunning. The builtin is is factors
+faster.
+
+.Example script `letter-substitution.sh`
+[source,bash]
+----
+#!/usr/bin/env bash 
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+declare -r TITLE="\nSubstitute 'o' for 'u' in string with '%s' a 1000 times\n"
+declare -r STRING="lagoon racoon spoon loon"
+
+function sed-loop() {
+  printf "${TITLE}" 'sed'
+  for i in {0..1000}; do
+    sed 's/o/u/g' <<< ${STRING} &>/dev/null
+  done
+}
+
+function builtin-loop() {
+  printf "${TITLE}" '${var//o/u}'
+  for i in {0..1000}; do
+    echo ${STRING//o/u} &>/dev/null 
+  done 
+}
+
+time sed-loop
+time builtin-loop
+----
+
+.Results
+[source,console]
+----
+$ bash letter-substitution.sh 
+
+Substitute 'o' for 'u' in string with 'sed' a 1000 times
+
+real    0m1.613s <1>
+user    0m1.008s
+sys     0m0.669s
+
+Substitute 'o' for 'u' in string with '${var//o/u}' a 1000 times
+
+real    0m0.020s <2>
+user    0m0.020s
+sys     0m0.000s
+----
+<1> Sed takes about 8 times longer to complete the job
+<2> Builtin is blazingly fast as it does not spawns a subshell for 
+    every substitution.
+--
 
 === Summary
 

@@ -3,7 +3,7 @@
 
 [.notes]
 --
-With Bash 3.1 the new assignment operator `+=` has been introduced. 
+With Bash 3.1 the new assignment operator `+=` was introduced. 
 It makes the previously cumbersome task of appending or adding content to 
 an already populated variable a lot easier and DRYer.  
 The following examples show the classical way and the new improved way.
