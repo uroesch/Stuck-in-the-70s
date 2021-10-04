@@ -13,6 +13,7 @@
 :toclevels: 4
 :toc-title: Stuck in the 70's
 :data-uri:
+:github-url: https://github.com/uroesch/Stuck-in-the-70s
 
 ifdef::backend-pdf[]
 :notitle:

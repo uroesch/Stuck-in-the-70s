@@ -2,6 +2,8 @@ ifdef::backend-revealjs[]
 [[eof]]
 == EOF
 
+icon:github[] *{github-url}*
+
 [NOTE]
 --
 No Sysadmin was hurt during the making of this presentation!

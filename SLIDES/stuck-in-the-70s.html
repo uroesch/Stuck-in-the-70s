@@ -863,9 +863,55 @@ first copying the code.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">function bootstrap() { config_host; hostname; }
 
 ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap"</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>It is hard to imagine something concreate with the above example hence a small
+example to show how it works. In the below example the script is adding a new
+SSH public key to the target user&#8217;s authorized_keys file. But only if the key
+is not alreay exisiting.</p></div>
+<div class="listingblock"><div class="title">Example script <code>rex-add_ssh_key.sh</code></div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
+
+function add_ssh_key() {
+  set -o errexit
+  set -o nounset
+  set -o pipefail
+
+  declare -r SSH_TYPE=${1}; shift;
+  declare -r SSH_KEY=${1}; shift;
+  declare -r SSH_COMMENT=${1}; shift;
+  declare -r AUTH_KEYS=${HOME}/.ssh/authorized_keys
+
+  function key_already_in_place() {
+    grep -q ${SSH_KEY} ${AUTH_KEYS}
+  }
+
+  function add_key() {
+    key_already_in_place &amp;&amp; {
+      echo "Key already exists in ${AUTH_KEYS}";
+      return 0;
+    }
+    printf "%s %s %s\n" \
+      ${SSH_TYPE} \
+      ${SSH_KEY} \
+      ${SSH_COMMENT} \
+      &gt;&gt; ${AUTH_KEYS}
+    echo "Key succesfully added to ${AUTH_KEYS}"
+  }
+  add_key
+}
+
+ssh localhost \
+  "$(declare -f add_ssh_key);" \
+  "add_ssh_key ssh-ed25519 AAAAC3N..7mG testkey"</code></pre></div></div>
+<div class="listingblock"><div class="title">Results from running above script</div><div class="content"><pre class="highlight"><code class="language-console" data-lang="console">$ bash rex-add_ssh_key.sh
+Key succesfully added to /home/test/.ssh/authorized_keys <i class="conum" data-value="1"></i><b>(1)</b>
+
+$ bash rex-add_ssh_key.sh
+Key already exists in /home/test/.ssh/authorized_keys <i class="conum" data-value="2"></i><b>(2)</b></code></pre></div></div>
+<div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td>Running the first time the key is added</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td>Running the second time the key is already present and no
+action is taken.</td></tr></table></div></aside>
 <div style="page-break-after: always;"></div>
 <div style="page-break-after: always;"></div></div></section></section>
-<section id="eof"><h2>EOF</h2><div class="slide-content"><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content"><div class="paragraph"><p>No Sysadmin was hurt during the making of this presentation!</p></div></td></tr></table></div></div></section></div></div><script src="./js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<section id="eof"><h2>EOF</h2><div class="slide-content"><div class="paragraph"><p><span class="icon"><i class="fa fa-github"></i></span> <strong><a href="https://github.com/uroesch/Stuck-in-the-70s" class="bare">https://github.com/uroesch/Stuck-in-the-70s</a></strong></p></div>
+<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content"><div class="paragraph"><p>No Sysadmin was hurt during the making of this presentation!</p></div></td></tr></table></div></div></section></div></div><script src="./js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
