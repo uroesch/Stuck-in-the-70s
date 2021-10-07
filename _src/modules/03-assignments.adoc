@@ -14,7 +14,7 @@ The following examples show the classical way and the new improved way.
 [.notes]
 --
 There is a few ways incrementing integers in bash but the focus is on the `+=` 
-assigment operator.
+assignment operator.
 --
 
 .Classical way
@@ -39,7 +39,7 @@ done
 
 ifdef::backend-revealjs[=== !]
 
-WARNING: Without declaring the variable as an integer the behaviour
+WARNING: Without declaring the variable as an integer the behavior
          is not as expected.
 
 [source,bash]
@@ -55,7 +55,7 @@ done
 
 [.notes]
 --
-The `+=` assigment operator acts differently when a string is
+The `+=` assignment operator acts differently when a string is
 encountered.
 --
 
@@ -77,7 +77,7 @@ string+=bar            # declare -- string="foobar"
 
 [.notes]
 --
-Using the `+=` assigment operator with a list or array
+Using the `+=` assignment operator with a list or array
 pushes a new value into an array.
 --
 
@@ -98,7 +98,7 @@ list+=bar         # declare -a list=(foo bar)
 === Summary
 
 The `+=` operator helps with the assignment of existing and brings
-a bit more comfort to the previously wordy and and often times ugly process
+a bit more comfort to the previously wordy and often times ugly process
 of appending or incrementing numbers. 
 
 WARNING: A `-=` assignment operator does not exist!

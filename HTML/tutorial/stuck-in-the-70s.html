@@ -56,27 +56,27 @@
 <li><a href="#parameter-expansion">Substitution Revolution</a>
 <ul class="sectlevel2">
 <li><a href="#_modify_case">Modify case</a></li>
-<li><a href="#_substituion">Substituion</a></li>
+<li><a href="#_substitution">Substitution</a></li>
 <li><a href="#_summary_4">Summary</a></li>
 </ul>
 </li>
 <li><a href="#arrays">( hip hip )</a>
 <ul class="sectlevel2">
 <li><a href="#_modify_case_2">Modify case</a></li>
-<li><a href="#_substitution">Substitution</a></li>
+<li><a href="#_substitution_2">Substitution</a></li>
 <li><a href="#_summary_5">Summary</a></li>
 </ul>
 </li>
 <li><a href="#conditionals">Perfect condition</a>
 <ul class="sectlevel2">
 <li><a href="#_double_square_brackets">Double square brackets</a></li>
-<li><a href="#_regex_comparision">Regex comparision</a></li>
+<li><a href="#_regex_comparison">Regex comparison</a></li>
 <li><a href="#_summary_6">Summary</a></li>
 </ul>
 </li>
 <li><a href="#functions">Funky, funky, functions!</a>
 <ul class="sectlevel2">
-<li><a href="#_special_charachters">Special charachters</a></li>
+<li><a href="#_special_characters">Special characters</a></li>
 <li><a href="#_function_within_functions">Function within functions</a></li>
 <li><a href="#_summary_7">Summary</a></li>
 </ul>
@@ -124,7 +124,7 @@ all stake holders without creating high hurdles for entry.</p>
 <p>Many times during my professional career I encountered the magical script
 written by a former employee who left years ago. Said script was written in an
 obscure language that was all the hype at the time but its star has faded since.
-No one in the team has the time or is willing learn the language, port it to
+No one in the team has the time or is willing to learn the language, port it to
 a more common language or they are simply too afraid of touching the code.</p>
 </div>
 <div class="paragraph">
@@ -344,7 +344,7 @@ set -o errexit
 </td>
 <td class="content">
 The options for <code>errexit</code> and <code>nounset</code> can be written as <code>set -e</code> or <code>set -u</code>
-      respectively. But I prefer writting them out to help a novice user to better
+      respectively. But I prefer writing them out to help a novice user to better
       understand these settings.
 </td>
 </tr>
@@ -364,7 +364,7 @@ The options for <code>errexit</code> and <code>nounset</code> can be written as 
 <div class="paragraph">
 <p>Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With <code>declare</code> certain
-attributes can bes defined to make a script more predictable and
+attributes can be defined to make a script more predictable and
 sometimes cut down on conversion logic.</p>
 </div>
 </div>
@@ -518,7 +518,7 @@ The following examples show the classical way and the new improved way.</p>
 <div class="content">
 <div class="paragraph">
 <p>There is a few ways incrementing integers in bash but the focus is on the <code>+=</code>
-assigment operator.</p>
+assignment operator.</p>
 </div>
 </div>
 </div>
@@ -549,7 +549,7 @@ done</code></pre>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Without declaring the variable as an integer the behaviour
+Without declaring the variable as an integer the behavior
          is not as expected.
 </td>
 </tr>
@@ -570,7 +570,7 @@ done</code></pre>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>The <code>+=</code> assigment operator acts differently when a string is
+<p>The <code>+=</code> assignment operator acts differently when a string is
 encountered.</p>
 </div>
 </div>
@@ -595,7 +595,7 @@ string+=bar            # declare -- string="foobar"</code></pre>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>Using the <code>+=</code> assigment operator with a list or array
+<p>Using the <code>+=</code> assignment operator with a list or array
 pushes a new value into an array.</p>
 </div>
 </div>
@@ -619,7 +619,7 @@ list+=bar         # declare -a list=(foo bar)</code></pre>
 <h3 id="_summary_3">Summary</h3>
 <div class="paragraph">
 <p>The <code>+=</code> operator helps with the assignment of existing and brings
-a bit more comfort to the previously wordy and and often times ugly process
+a bit more comfort to the previously wordy and often times ugly process
 of appending or incrementing numbers.</p>
 </div>
 <div class="admonitionblock warning">
@@ -644,7 +644,7 @@ A <code>-=</code> assignment operator does not exist!
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>Some may know the classical parameter expansion from bourne shell such as
+<p>Some may know the classical parameter expansion from Bourne shell such as
 <code>${parameter:N,N}</code> or <code>${parameter:-default}</code> or the ones from Korn shell
 <code>${parameter%pattern}</code> or <code>${parameter#pattern}</code>. But bash has a few of
 its own. We look at three of them.</p>
@@ -723,7 +723,7 @@ fi</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_substituion">Substituion</h3>
+<h3 id="_substitution">Substitution</h3>
 <div class="paragraph">
 <p>This one really gets me! I almost never see <code>${parameter/pattern/}</code>
 substitutions in the wild. And is has been around for ages.</p>
@@ -732,7 +732,7 @@ substitutions in the wild. And is has been around for ages.</p>
 <div class="content">
 <div class="paragraph">
 <p>Given it is not as powerful as <code>sed</code> but for most use cases it is more than
-sufficuent.</p>
+sufficient.</p>
 </div>
 </div>
 </div>
@@ -760,8 +760,8 @@ echo ${string//oo/u}             # lagun racun</code></pre>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>The script below loops 1000 times and does a string substition with <code>sed</code> and then via
-the <code>bash</code> builtin substituion. The result is quite stunning. The builtin is is factors
+<p>The script below loops 1000 times and does a string substitution with <code>sed</code> and then via
+the <code>bash</code> builtin substitution. The result is quite stunning. The builtin is is factors
 faster.</p>
 </div>
 <div class="listingblock">
@@ -816,7 +816,7 @@ sys     0m0.000s</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Sed takes about 8 times longer to complete the job</td>
+<td><code>sed</code> takes about 8 times longer to complete the job</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -892,7 +892,7 @@ Requires bash &gt;= 4.0
 </div>
 </div>
 <div class="sect2">
-<h3 id="_substitution">Substitution</h3>
+<h3 id="_substitution_2">Substitution</h3>
 <div class="paragraph">
 <p>Applying substitution to each element of an array can also be done.
 Here a few examples.</p>
@@ -945,7 +945,7 @@ and excessive looping are required.</p>
 <div class="content">
 <div class="paragraph">
 <p>Conditional statements in classical shell script have a few
-shortcommings. For backward comptibility bash understands
+shortcomings. For backward compatibility bash understands
 the single brackets <code>[ &#8230;&#8203; ]</code> but are a couple more ways
 to enclose conditional statements.</p>
 </div>
@@ -968,7 +968,7 @@ it comes to dealing with empty strings in a comparison.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Effective the above conditional statement is expaned as
+<p>Effectively the above conditional statement is expanded as
 <code>[ = foo ]</code> because the variable <code>foo</code> is empty.
 There are two common ways to prevent the error:</p>
 </div>
@@ -981,7 +981,7 @@ There are two common ways to prevent the error:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Korn shell introduced the more robuts <code>[[</code> which does not
+<p>Korn shell introduced the more robusts <code>[[</code> which does not
 suffer the same limitations.</p>
 </div>
 <div class="listingblock">
@@ -1007,7 +1007,7 @@ it really matter if you are writing a bash script?</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_regex_comparision">Regex comparision</h3>
+<h3 id="_regex_comparison">Regex comparison</h3>
 <div class="paragraph">
 <p>Bash has also a regex operator <code>=~</code> for matching strings.
 This often overlooked feature can save you lots of typing.</p>
@@ -1015,7 +1015,7 @@ This often overlooked feature can save you lots of typing.</p>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>More importantly string comparsions within bash are more
+<p>More importantly string comparisons within bash are more
 performant as no sub shell is required for the comparison.</p>
 </div>
 </div>
@@ -1070,9 +1070,9 @@ more relaxed rules.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_special_charachters">Special charachters</h3>
+<h3 id="_special_characters">Special characters</h3>
 <div class="paragraph">
-<p>With the exception of a few reserved charachters such as <code>$</code>, <code>|</code>,
+<p>With the exception of a few reserved characters such as <code>$</code>, <code>|</code>,
 <code>(</code> and <code>{</code> among others pretty much everything else works.</p>
 </div>
 <div class="listingblock">
@@ -1118,7 +1118,7 @@ Unfortunately there they are still accessible globally.</p>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>There is a usecase for this scenario which we get to later.
+<p>There is a use case for this scenario which we get to later.
 But with the <code>local</code> keyword the scope can be limited.</p>
 </div>
 </div>
@@ -1164,7 +1164,7 @@ to the ones found in the common scripting languages.</p>
 <div class="sect2">
 <h3 id="_dont_loop_printf">Don&#8217;t loop, printf!</h3>
 <div class="paragraph">
-<p>The bash <code>printf</code> can be used instead o loop for printing as it
+<p>The bash <code>printf</code> can be used instead of a loop for printing as it
 prints each additional argument not unlike a loop.</p>
 </div>
 <div class="listingblock">
@@ -1290,7 +1290,7 @@ Requires bash &gt;= 4.2
 <div class="sect2">
 <h3 id="_summary_8">Summary</h3>
 <div class="paragraph">
-<p>IMHO, one of most underused builtins in bash scripts is printf.
+<p>IMHO, one of most underused builtin in bash scripts is printf.
 It is very versatile and can help reduce code and complexity if used
 appropriately.</p>
 </div>
@@ -1338,9 +1338,9 @@ typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")</co
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>Splitting field seperated data into variables is usually down with <code>awk</code> in shell
-scripts. And <code>awk</code> is supberb tools when working on large data sets. However simply
-spliting into shell variables is a performance killer!</p>
+<p>Splitting field separated data into variables is usually down with <code>awk</code> in shell
+scripts. And <code>awk</code> is superb tools when working on large data sets. However simply
+splitting into shell variables is a performance killer!</p>
 </div>
 <div class="listingblock">
 <div class="title">Example script <code>read-list.sh</code></div>
@@ -1400,12 +1400,12 @@ sys     0m0.002s</code></pre>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Splitting with <code>awk</code> is about 580 times slower!
-Although there are only 100 iterrations <code>awk</code> is
+Although there are only 100 iterations <code>awk</code> is
 called 700 times.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Barely noticable the time used with the builtin.</td>
+<td>Barely noticeable the time used with the builtin.</td>
 </tr>
 </table>
 </div>
@@ -1443,7 +1443,7 @@ esac</code></pre>
 <div class="sect2">
 <h3 id="_poor_mans_ansible">Poor man&#8217;s Ansible</h3>
 <div class="paragraph">
-<p>Execute a localy defined function on a remote machine without
+<p>Execute a locally defined function on a remote machine without
 first copying the code.</p>
 </div>
 <div class="listingblock">
@@ -1456,10 +1456,10 @@ ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap"</code></pre>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>It is hard to imagine something concreate with the above example hence a small
+<p>It is hard to imagine something concrete with the above example hence a small
 example to show how it works. In the below example the script is adding a new
 SSH public key to the target user&#8217;s authorized_keys file. But only if the key
-is not alreay exisiting.</p>
+is not already existing.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example script <code>rex-add_ssh_key.sh</code></div>
@@ -1490,7 +1490,7 @@ function add_ssh_key() {
       ${SSH_KEY} \
       ${SSH_COMMENT} \
       &gt;&gt; ${AUTH_KEYS}
-    echo "Key succesfully added to ${AUTH_KEYS}"
+    echo "Key successfully added to ${AUTH_KEYS}"
   }
   add_key
 }
@@ -2980,7 +2980,7 @@ action is taken.</td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-04 07:36:03 UTC
+Last updated 2021-10-07 18:50:32 UTC
 </div>
 </div>
 </body>

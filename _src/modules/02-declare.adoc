@@ -5,7 +5,7 @@
 --
 Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With `declare` certain
-attributes can bes defined to make a script more predictable and
+attributes can be defined to make a script more predictable and
 sometimes cut down on conversion logic.
 --
 

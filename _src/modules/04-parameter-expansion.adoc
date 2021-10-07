@@ -3,7 +3,7 @@
 
 [.notes]
 --
-Some may know the classical parameter expansion from bourne shell such as 
+Some may know the classical parameter expansion from Bourne shell such as 
 `${parameter:N,N}` or `${parameter:-default}` or the ones from Korn shell
 `${parameter%pattern}` or `${parameter#pattern}`. But bash has a few of 
 its own. We look at three of them. 
@@ -62,7 +62,7 @@ fi
 ----
 
 
-=== Substituion
+=== Substitution
 
 This one really gets me! I almost never see `${parameter/pattern/}` 
 substitutions in the wild. And is has been around for ages. 
@@ -70,7 +70,7 @@ substitutions in the wild. And is has been around for ages.
 [.notes]
 --
 Given it is not as powerful as `sed` but for most use cases it is more than 
-sufficuent.
+sufficient.
 --
 
 [source,bash]
@@ -99,8 +99,8 @@ echo ${string//oo/u}             # lagun racun
 [.notes]
 --
 
-The script below loops 1000 times and does a string substition with `sed` and then via 
-the `bash` builtin substituion. The result is quite stunning. The builtin is is factors
+The script below loops 1000 times and does a string substitution with `sed` and then via 
+the `bash` builtin substitution. The result is quite stunning. The builtin is is factors
 faster.
 
 .Example script `letter-substitution.sh`
@@ -150,7 +150,7 @@ real    0m0.020s <2>
 user    0m0.020s
 sys     0m0.000s
 ----
-<1> Sed takes about 8 times longer to complete the job
+<1> `sed` takes about 8 times longer to complete the job
 <2> Builtin is blazingly fast as it does not spawns a subshell for 
     every substitution.
 --

@@ -11,7 +11,7 @@ Here we have a look how we can use `printf` a log smarter!
 
 === Don't loop, printf!
 
-The bash `printf` can be used instead o loop for printing as it
+The bash `printf` can be used instead of a loop for printing as it
 prints each additional argument not unlike a loop.
 
 .Print fruit loop :) 
@@ -108,6 +108,6 @@ NOTE: Requires bash >= 4.2
 
 === Summary
 
-IMHO, one of most underused builtins in bash scripts is printf.
+IMHO, one of most underused builtin in bash scripts is printf.
 It is very versatile and can help reduce code and complexity if used
 appropriately.

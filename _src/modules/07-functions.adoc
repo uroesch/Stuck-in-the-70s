@@ -12,9 +12,9 @@ more relaxed rules.
 Let's dive in!
 --
 
-=== Special charachters 
+=== Special characters 
 
-With the exception of a few reserved charachters such as `$`, `|`, 
+With the exception of a few reserved characters such as `$`, `|`, 
 `(` and `{` among others pretty much everything else works. 
 
 [source,bash]
@@ -59,7 +59,7 @@ Unfortunately there they are still accessible globally.
 
 [.notes]
 --
-There is a usecase for this scenario which we get to later.
+There is a use case for this scenario which we get to later.
 But with the `local` keyword the scope can be limited.
 --
 

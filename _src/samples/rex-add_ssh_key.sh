@@ -24,7 +24,7 @@ function add_ssh_key() {
       ${SSH_KEY} \
       ${SSH_COMMENT} \
       >> ${AUTH_KEYS}
-    echo "Key succesfully added to ${AUTH_KEYS}"
+    echo "Key successfully added to ${AUTH_KEYS}"
   }
   add_key
 }

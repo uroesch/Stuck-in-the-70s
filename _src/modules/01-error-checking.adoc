@@ -161,6 +161,6 @@ set -o errexit
 [.notes]
 --
 NOTE: The options for `errexit` and `nounset` can be written as `set -e` or `set -u`
-      respectively. But I prefer writting them out to help a novice user to better
+      respectively. But I prefer writing them out to help a novice user to better
       understand these settings.
 --
