@@ -39,9 +39,9 @@ typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")
 [.notes]
 --
 
-Splitting field seperated data into variables is usually down with `awk` in shell
-scripts. And `awk` is supberb tools when working on large data sets. However simply
-spliting into shell variables is a performance killer! 
+Splitting field separated data into variables is usually down with `awk` in shell
+scripts. And `awk` is superb tools when working on large data sets. However simply
+splitting into shell variables is a performance killer! 
 
 .Example script `read-list.sh`
 [source,bash]
@@ -96,9 +96,9 @@ user    0m0.001s
 sys     0m0.002s
 ----
 <1> Splitting with `awk` is about 580 times slower!
-    Although there are only 100 iterrations `awk` is
+    Although there are only 100 iterations `awk` is
     called 700 times.
-<2> Barely noticable the time used with the builtin.
+<2> Barely noticeable the time used with the builtin.
 --
 
 === May the case be with you
@@ -130,7 +130,7 @@ esac
 
 === Poor man's Ansible
 
-Execute a localy defined function on a remote machine without
+Execute a locally defined function on a remote machine without
 first copying the code. 
 
 [source,bash]
@@ -143,10 +143,10 @@ ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap"
 
 [.notes]
 --
-It is hard to imagine something concreate with the above example hence a small 
+It is hard to imagine something concrete with the above example hence a small 
 example to show how it works. In the below example the script is adding a new
 SSH public key to the target user's authorized_keys file. But only if the key
-is not alreay exisiting.
+is not already existing.
 
 .Example script `rex-add_ssh_key.sh`
 [source,bash]
@@ -177,7 +177,7 @@ function add_ssh_key() {
       ${SSH_KEY} \
       ${SSH_COMMENT} \
       >> ${AUTH_KEYS}
-    echo "Key succesfully added to ${AUTH_KEYS}"
+    echo "Key successfully added to ${AUTH_KEYS}"
   }
   add_key
 }

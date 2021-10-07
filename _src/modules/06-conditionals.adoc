@@ -4,7 +4,7 @@
 [.notes]
 --
 Conditional statements in classical shell script have a few
-shortcommings. For backward comptibility bash understands
+shortcomings. For backward compatibility bash understands
 the single brackets `[ ... ]` but are a couple more ways
 to enclose conditional statements.
 
@@ -25,7 +25,7 @@ foo=
 [ ${foo} = foo ]      # bash: [: =: unary operator expected
 ----
 
-Effective the above conditional statement is expaned as
+Effectively the above conditional statement is expanded as
 `[ = foo ]` because the variable `foo` is empty.
 There are two common ways to prevent the error:
 
@@ -39,7 +39,7 @@ foo=
 
 ifdef::backend-revealjs[=== !]
 
-Korn shell introduced the more robuts `[[` which does not
+Korn shell introduced the more robusts `[[` which does not
 suffer the same limitations. 
 
 .Korn shell style double square brackets
@@ -60,7 +60,7 @@ And while the double square brackets are not POSIx compliant, does
 it really matter if you are writing a bash script?
 --
 
-//// 
+////
 === Double parentheses
 
 TBD
@@ -73,14 +73,14 @@ declare -i number=1
 ----
 ////
 
-=== Regex comparision
+=== Regex comparison
 
 Bash has also a regex operator `=~` for matching strings.
 This often overlooked feature can save you lots of typing. 
 
 [.notes]
 --
-More importantly string comparsions within bash are more
+More importantly string comparisons within bash are more
 performant as no sub shell is required for the comparison.
 --
 

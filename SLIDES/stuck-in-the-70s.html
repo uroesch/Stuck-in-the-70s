@@ -401,7 +401,7 @@ all stake holders without creating high hurdles for entry.</p></div>
 <aside class="notes"><div class="paragraph"><p>Many times during my professional career I encountered the magical script
 written by a former employee who left years ago. Said script was written in an
 obscure language that was all the hype at the time but its star has faded since.
-No one in the team has the time or is willing learn the language, port it to
+No one in the team has the time or is willing to learn the language, port it to
 a more common language or they are simply too afraid of touching the code.</p></div>
 <div class="paragraph"><p>I&#8217;m sure many have experienced similar situations. This presentation is an
 introduction to modern <code>bash</code> script concepts to help sanitize old shell scripts
@@ -480,12 +480,12 @@ set -o errexit
 
 [...]</code></pre></div></div>
 <aside class="notes"><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">The options for <code>errexit</code> and <code>nounset</code> can be written as <code>set -e</code> or <code>set -u</code>
-      respectively. But I prefer writting them out to help a novice user to better
+      respectively. But I prefer writing them out to help a novice user to better
       understand these settings.</td></tr></table></div></aside>
 <div style="page-break-after: always;"></div></div></section></section>
 <section><section id="foobar"><h2>I do declare!</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With <code>declare</code> certain
-attributes can bes defined to make a script more predictable and
+attributes can be defined to make a script more predictable and
 sometimes cut down on conversion logic.</p></div></aside></div></section><section id="_integer"><h2>Integer</h2><div class="slide-content"><div class="paragraph"><p>Ensure the variable only holds integers.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -i int=1
 
@@ -529,7 +529,7 @@ This makes the script more predictable!</p></div>
 It makes the previously cumbersome task of appending or adding content to
 an already populated variable a lot easier and DRYer.
 The following examples show the classical way and the new improved way.</p></div></aside></div></section><section id="_integer_incrementation"><h2>Integer incrementation</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>There is a few ways incrementing integers in bash but the focus is on the <code>+=</code>
-assigment operator.</p></div></aside>
+assignment operator.</p></div></aside>
 <div class="listingblock"><div class="title">Classical way</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">counter=0
 while true; do
   counter=`expr ${counter} + 1`   # declare -- counter="1"
@@ -539,28 +539,28 @@ done</code></pre></div></div>
 while true; do
   counter+=1                      # declare -i counter="1"
   # [...]
-done</code></pre></div></div></div></section><section><div class="slide-content"><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">Without declaring the variable as an integer the behaviour
+done</code></pre></div></div></div></section><section><div class="slide-content"><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">Without declaring the variable as an integer the behavior
          is not as expected.</td></tr></table></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">counter=0
 while true; do
   counter+=1                      # declare -- counter="01"
   # [...]
-done</code></pre></div></div></div></section><section id="_append_to_string"><h2>Append to string</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>The <code>+=</code> assigment operator acts differently when a string is
+done</code></pre></div></div></div></section><section id="_append_to_string"><h2>Append to string</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>The <code>+=</code> assignment operator acts differently when a string is
 encountered.</p></div></aside>
 <div class="listingblock"><div class="title">Classical way</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">string="foo"
 string="${string}bar"  # declare -- string="foobar"</code></pre></div></div>
 <div class="listingblock"><div class="title">With <code>+=</code> operator</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- string=foo
-string+=bar            # declare -- string="foobar"</code></pre></div></div></div></section><section id="_push_to_array"><h2>Push to array</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Using the <code>+=</code> assigment operator with a list or array
+string+=bar            # declare -- string="foobar"</code></pre></div></div></div></section><section id="_push_to_array"><h2>Push to array</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Using the <code>+=</code> assignment operator with a list or array
 pushes a new value into an array.</p></div></aside>
 <div class="listingblock"><div class="title">Classical list</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">list="foo"
 list="${list} bar" # declare -- list="foo bar"</code></pre></div></div>
 <div class="listingblock"><div class="title">With <code>+=</code> operator</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -a list=( foo )
 list+=bar         # declare -a list=(foo bar)</code></pre></div></div></div></section><section id="_summary_3"><h2>Summary</h2><div class="slide-content"><div class="paragraph"><p>The <code>+=</code> operator helps with the assignment of existing and brings
-a bit more comfort to the previously wordy and and often times ugly process
+a bit more comfort to the previously wordy and often times ugly process
 of appending or incrementing numbers.</p></div>
 <div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">A <code>-=</code> assignment operator does not exist!</td></tr></table></div>
 <div style="page-break-after: always;"></div></div></section></section>
-<section><section id="parameter-expansion"><h2>Substitution Revolution</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Some may know the classical parameter expansion from bourne shell such as
+<section><section id="parameter-expansion"><h2>Substitution Revolution</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Some may know the classical parameter expansion from Bourne shell such as
 <code>${parameter:N,N}</code> or <code>${parameter:-default}</code> or the ones from Korn shell
 <code>${parameter%pattern}</code> or <code>${parameter#pattern}</code>. But bash has a few of
 its own. We look at three of them.</p></div></aside></div></section><section id="_modify_case"><h2>Modify case</h2><div class="slide-content"><div class="paragraph"><p>There are two basic modes, the first is to convert the case
@@ -584,18 +584,18 @@ echo ${fruits^^[ae]}            # bAnAnA ApplE pEAr</code></pre></div></div>
 fi</code></pre></div></div>
 <div class="listingblock"><div class="title">With parameter expansion</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">if [[ ${string1,,} == ${string2} ]]; then
   # [...]
-fi</code></pre></div></div></div></section><section id="_substituion"><h2>Substituion</h2><div class="slide-content"><div class="paragraph"><p>This one really gets me! I almost never see <code>${parameter/pattern/}</code>
+fi</code></pre></div></div></div></section><section id="_substitution"><h2>Substitution</h2><div class="slide-content"><div class="paragraph"><p>This one really gets me! I almost never see <code>${parameter/pattern/}</code>
 substitutions in the wild. And is has been around for ages.</p></div>
 <aside class="notes"><div class="paragraph"><p>Given it is not as powerful as <code>sed</code> but for most use cases it is more than
-sufficuent.</p></div></aside>
+sufficient.</p></div></aside>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- string="lagoon racoon"
 echo ${string/oo/u}             # lagun racoon
 echo ${string//oo/u}            # lagun racun</code></pre></div></div></div></section><section><div class="slide-content"><div class="listingblock"><div class="title">Real world example</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">string="lagoon racoon"
 echo ${string} | sed 's/oo/u/g' # lagun racun</code></pre></div></div>
 <div class="listingblock"><div class="title">With parameter expansion</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- string="lagoon racoon"
 echo ${string//oo/u}             # lagun racun</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>The script below loops 1000 times and does a string substition with <code>sed</code> and then via
-the <code>bash</code> builtin substituion. The result is quite stunning. The builtin is is factors
+<aside class="notes"><div class="paragraph"><p>The script below loops 1000 times and does a string substitution with <code>sed</code> and then via
+the <code>bash</code> builtin substitution. The result is quite stunning. The builtin is is factors
 faster.</p></div>
 <div class="listingblock"><div class="title">Example script <code>letter-substitution.sh</code></div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
@@ -635,7 +635,7 @@ Substitute 'o' for 'u' in string with '${var//o/u}' a 1000 times
 real    0m0.020s <i class="conum" data-value="2"></i><b>(2)</b>
 user    0m0.020s
 sys     0m0.000s</code></pre></div></div>
-<div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td>Sed takes about 8 times longer to complete the job</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td>Builtin is blazingly fast as it does not spawns a subshell for
+<div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td><code>sed</code> takes about 8 times longer to complete the job</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td>Builtin is blazingly fast as it does not spawns a subshell for
 every substitution.</td></tr></table></div></aside></div></section><section id="_summary_4"><h2>Summary</h2><div class="slide-content"><div class="paragraph"><p>Parameter expansion in shell scripts can be a bit cryptic at first but it
 is definitely a lot faster then to run a sub shell for every little change
 made to a small string.</p></div>
@@ -655,7 +655,7 @@ echo ${fruit[@]^a}              # banana Apple pear
 echo ${fruit[@]^[bp]}           # Banana apple Pear
 echo ${fruit[@]^^a}             # bAnAnA Apple peAr
 echo ${fruit[@]^^[ae]}          # bAnAnA ApplE pEAr</code></pre></div></div>
-<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Requires bash &gt;= 4.0</td></tr></table></div></div></section><section id="_substitution"><h2>Substitution</h2><div class="slide-content"><div class="paragraph"><p>Applying substitution to each element of an array can also be done.
+<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Requires bash &gt;= 4.0</td></tr></table></div></div></section><section id="_substitution_2"><h2>Substitution</h2><div class="slide-content"><div class="paragraph"><p>Applying substitution to each element of an array can also be done.
 Here a few examples.</p></div>
 <div class="listingblock"><div class="title">General substitutions</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -a array=( lagoon racoon )
 echo ${array[@]/o/u}          # laguon racuon
@@ -669,18 +669,18 @@ to a list of values at the time of echoing. No <code>sed</code>, <code>tr</code>
 and excessive looping are required.</p></div>
 <div style="page-break-after: always;"></div></div></section></section>
 <section><section id="conditionals"><h2>Perfect condition</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Conditional statements in classical shell script have a few
-shortcommings. For backward comptibility bash understands
+shortcomings. For backward compatibility bash understands
 the single brackets <code>[ &#8230;&#8203; ]</code> but are a couple more ways
 to enclose conditional statements.</p></div>
 <div class="paragraph"><p>Let&#8217;s dive in.</p></div></aside></div></section><section id="_double_square_brackets"><h2>Double square brackets</h2><div class="slide-content"><div class="paragraph"><p>Double square brackets are more forgiving when
 it comes to dealing with empty strings in a comparison.</p></div></div></section><section><div class="slide-content"><div class="listingblock"><div class="title">Classical shell script condition</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">foo=
 [ ${foo} = foo ]      # bash: [: =: unary operator expected</code></pre></div></div>
-<div class="paragraph"><p>Effective the above conditional statement is expaned as
+<div class="paragraph"><p>Effectively the above conditional statement is expanded as
 <code>[ = foo ]</code> because the variable <code>foo</code> is empty.
 There are two common ways to prevent the error:</p></div>
 <div class="listingblock"><div class="title">Classical shell script condition workaround</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">foo=
 [ "${foo}" = "foo" ]  # exit rc 1
-[ x${foo} = xfoo ]    # exit rc 1</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>Korn shell introduced the more robuts <code>[[</code> which does not
+[ x${foo} = xfoo ]    # exit rc 1</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>Korn shell introduced the more robusts <code>[[</code> which does not
 suffer the same limitations.</p></div>
 <div class="listingblock"><div class="title">Korn shell style double square brackets</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- foo=
 [[ ${foo} == foo ]]   # exit rc 1</code></pre></div></div>
@@ -689,9 +689,9 @@ shells adapted the double square bracket style conditionals.
 Still to this day there I mostly encounter single square brackets all
 over the place. Hence the question "Are we stuck in the 70&#8217;s?".</p></div>
 <div class="paragraph"><p>And while the double square brackets are not POSIx compliant, does
-it really matter if you are writing a bash script?</p></div></aside></div></section><section id="_regex_comparision"><h2>Regex comparision</h2><div class="slide-content"><div class="paragraph"><p>Bash has also a regex operator <code>=~</code> for matching strings.
+it really matter if you are writing a bash script?</p></div></aside></div></section><section id="_regex_comparison"><h2>Regex comparison</h2><div class="slide-content"><div class="paragraph"><p>Bash has also a regex operator <code>=~</code> for matching strings.
 This often overlooked feature can save you lots of typing.</p></div>
-<aside class="notes"><div class="paragraph"><p>More importantly string comparsions within bash are more
+<aside class="notes"><div class="paragraph"><p>More importantly string comparisons within bash are more
 performant as no sub shell is required for the comparison.</p></div></aside>
 <div class="listingblock"><div class="title">Classical shell string match</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">string=foobar
 if echo ${string} | grep -q '[Bb]ar'; then
@@ -709,7 +709,7 @@ makes them virtually portable.</p></div>
 minuses <code>-</code> are not permitted or special characters can not be used.</p></div>
 <div class="paragraph"><p>While this is true for traditional shell scripts as well Bash has
 more relaxed rules.</p></div>
-<div class="paragraph"><p>Let&#8217;s dive in!</p></div></aside></div></section><section id="_special_charachters"><h2>Special charachters</h2><div class="slide-content"><div class="paragraph"><p>With the exception of a few reserved charachters such as <code>$</code>, <code>|</code>,
+<div class="paragraph"><p>Let&#8217;s dive in!</p></div></aside></div></section><section id="_special_characters"><h2>Special characters</h2><div class="slide-content"><div class="paragraph"><p>With the exception of a few reserved characters such as <code>$</code>, <code>|</code>,
 <code>(</code> and <code>{</code> among others pretty much everything else works.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">function @() { echo '@'; }
 @                                        # @
@@ -733,7 +733,7 @@ function test::funky() {
 funky            # execute funky
 test::funky      # test funky function</code></pre></div></div></div></section><section id="_function_within_functions"><h2>Function within functions</h2><div class="slide-content"><div class="paragraph"><p>It it is even possible to place functions within functions.
 Unfortunately there they are still accessible globally.</p></div>
-<aside class="notes"><div class="paragraph"><p>There is a usecase for this scenario which we get to later.
+<aside class="notes"><div class="paragraph"><p>There is a use case for this scenario which we get to later.
 But with the <code>local</code> keyword the scope can be limited.</p></div></aside>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">function parent() {
   function @child() {
@@ -748,7 +748,7 @@ characters tho. I don&#8217;t think many bash scripters use them.</p></div>
 <div style="page-break-after: always;"></div></div></section></section>
 <section><section id="printf"><h2>What the printf?</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>The builtin <code>printf</code> function comes with a few differences compared
 to the ones found in the common scripting languages.</p></div>
-<div class="paragraph"><p>Here we have a look how we can use <code>printf</code> a log smarter!</p></div></aside></div></section><section id="_dont_loop_printf"><h2>Don&#8217;t loop, printf!</h2><div class="slide-content"><div class="paragraph"><p>The bash <code>printf</code> can be used instead o loop for printing as it
+<div class="paragraph"><p>Here we have a look how we can use <code>printf</code> a log smarter!</p></div></aside></div></section><section id="_dont_loop_printf"><h2>Don&#8217;t loop, printf!</h2><div class="slide-content"><div class="paragraph"><p>The bash <code>printf</code> can be used instead of a loop for printing as it
 prints each additional argument not unlike a loop.</p></div>
 <div class="listingblock"><div class="title">Print fruit loop :)</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -a fruit=( banana apple pear )
 for f in ${fruit[@]}; do echo ${f}; done    # banana\napple\npear</code></pre></div></div>
@@ -780,7 +780,7 @@ echo ${line}                    # ----------------</code></pre></div></div>
 an Unix epoch timestamp to a human readable format.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">printf "%(%Y-%m-%d)T\n" 1515151515
 2018-01-05</code></pre></div></div>
-<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Requires bash &gt;= 4.2</td></tr></table></div></div></section><section id="_summary_8"><h2>Summary</h2><div class="slide-content"><div class="paragraph"><p>IMHO, one of most underused builtins in bash scripts is printf.
+<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Requires bash &gt;= 4.2</td></tr></table></div></div></section><section id="_summary_8"><h2>Summary</h2><div class="slide-content"><div class="paragraph"><p>IMHO, one of most underused builtin in bash scripts is printf.
 It is very versatile and can help reduce code and complexity if used
 appropriately.</p></div>
 <div style="page-break-after: always;"></div></div></section></section>
@@ -795,9 +795,9 @@ IFS=: read fname lname role &lt;&lt;&lt; "${info}"</code></pre></div></div></div
 IFS=: read -a person &lt;&lt;&lt; "${info}"
 
 typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Splitting field seperated data into variables is usually down with <code>awk</code> in shell
-scripts. And <code>awk</code> is supberb tools when working on large data sets. However simply
-spliting into shell variables is a performance killer!</p></div>
+<aside class="notes"><div class="paragraph"><p>Splitting field separated data into variables is usually down with <code>awk</code> in shell
+scripts. And <code>awk</code> is superb tools when working on large data sets. However simply
+splitting into shell variables is a performance killer!</p></div>
 <div class="listingblock"><div class="title">Example script <code>read-list.sh</code></div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 set -o errexit
@@ -843,8 +843,8 @@ real    0m0.002s <i class="conum" data-value="2"></i><b>(2)</b>
 user    0m0.001s
 sys     0m0.002s</code></pre></div></div>
 <div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td>Splitting with <code>awk</code> is about 580 times slower!
-Although there are only 100 iterrations <code>awk</code> is
-called 700 times.</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td>Barely noticable the time used with the builtin.</td></tr></table></div></aside></div></section><section id="_may_the_case_be_with_you"><h2>May the case be with you</h2><div class="slide-content"><div class="listingblock"><div class="title">Too WET to maintain</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">if [ ${host} = jp-prod ]; then
+Although there are only 100 iterations <code>awk</code> is
+called 700 times.</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td>Barely noticeable the time used with the builtin.</td></tr></table></div></aside></div></section><section id="_may_the_case_be_with_you"><h2>May the case be with you</h2><div class="slide-content"><div class="listingblock"><div class="title">Too WET to maintain</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">if [ ${host} = jp-prod ]; then
   prod_host ${host}
 elif [ ${host} = ch-prod ]; then
   prod_host ${host}
@@ -858,15 +858,15 @@ fi</code></pre></div></div>
   *-prod) prod_host ${host};;
   *-uat)  uat_host ${host};;
   *)      dev_host ${host};;
-esac</code></pre></div></div></div></section><section id="_poor_mans_ansible"><h2>Poor man&#8217;s Ansible</h2><div class="slide-content"><div class="paragraph"><p>Execute a localy defined function on a remote machine without
+esac</code></pre></div></div></div></section><section id="_poor_mans_ansible"><h2>Poor man&#8217;s Ansible</h2><div class="slide-content"><div class="paragraph"><p>Execute a locally defined function on a remote machine without
 first copying the code.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">function bootstrap() { config_host; hostname; }
 
 ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap"</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>It is hard to imagine something concreate with the above example hence a small
+<aside class="notes"><div class="paragraph"><p>It is hard to imagine something concrete with the above example hence a small
 example to show how it works. In the below example the script is adding a new
 SSH public key to the target user&#8217;s authorized_keys file. But only if the key
-is not alreay exisiting.</p></div>
+is not already existing.</p></div>
 <div class="listingblock"><div class="title">Example script <code>rex-add_ssh_key.sh</code></div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 function add_ssh_key() {
@@ -893,7 +893,7 @@ function add_ssh_key() {
       ${SSH_KEY} \
       ${SSH_COMMENT} \
       &gt;&gt; ${AUTH_KEYS}
-    echo "Key succesfully added to ${AUTH_KEYS}"
+    echo "Key successfully added to ${AUTH_KEYS}"
   }
   add_key
 }
