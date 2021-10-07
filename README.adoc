@@ -19,3 +19,40 @@ clone the repository use the following command:
 ----
 git clone --recursive https://github.com/uroesch/Stuck-in-the-70s.git
 ----
+
+== Build documents
+
+This presentation is based on asciidoctor sources and needs to be built or
+converted to the 3 supported formats. Currently these are:
+* Presentation (reveal.js)
+* HTML document
+* PDF document
+
+=== Presentation
+
+The reveal.js is presentation is stored under the `SLIDES` directory.
+
+[source,console]
+----
+rake revealjs
+----
+
+=== HTML
+
+The self-contained HTML document can be found under the `HTML` directory.
+There may be several subdirectories depending on the style sheet used.
+
+[source,console]
+----
+rake html
+----
+
+=== PDF
+
+The PDF document can be found under the `PDF` directory.
+There may be several subdirectories depending on the style sheet used.
+
+[source,console]
+----
+rake pdf
+----
