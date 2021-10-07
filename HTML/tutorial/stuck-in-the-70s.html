@@ -56,27 +56,27 @@
 <li><a href="#parameter-expansion">Substitution Revolution</a>
 <ul class="sectlevel2">
 <li><a href="#_modify_case">Modify case</a></li>
-<li><a href="#_substituion">Substituion</a></li>
+<li><a href="#_substitution">Substitution</a></li>
 <li><a href="#_summary_4">Summary</a></li>
 </ul>
 </li>
 <li><a href="#arrays">( hip hip )</a>
 <ul class="sectlevel2">
 <li><a href="#_modify_case_2">Modify case</a></li>
-<li><a href="#_substitution">Substitution</a></li>
+<li><a href="#_substitution_2">Substitution</a></li>
 <li><a href="#_summary_5">Summary</a></li>
 </ul>
 </li>
 <li><a href="#conditionals">Perfect condition</a>
 <ul class="sectlevel2">
 <li><a href="#_double_square_brackets">Double square brackets</a></li>
-<li><a href="#_regex_comparision">Regex comparision</a></li>
+<li><a href="#_regex_comparison">Regex comparison</a></li>
 <li><a href="#_summary_6">Summary</a></li>
 </ul>
 </li>
 <li><a href="#functions">Funky, funky, functions!</a>
 <ul class="sectlevel2">
-<li><a href="#_special_charachters">Special charachters</a></li>
+<li><a href="#_special_characters">Special characters</a></li>
 <li><a href="#_function_within_functions">Function within functions</a></li>
 <li><a href="#_summary_7">Summary</a></li>
 </ul>
@@ -124,7 +124,7 @@ all stake holders without creating high hurdles for entry.</p>
 <p>Many times during my professional career I encountered the magical script
 written by a former employee who left years ago. Said script was written in an
 obscure language that was all the hype at the time but its star has faded since.
-No one in the team has the time or is willing learn the language, port it to
+No one in the team has the time or is willing to learn the language, port it to
 a more common language or they are simply too afraid of touching the code.</p>
 </div>
 <div class="paragraph">
@@ -364,7 +364,7 @@ The options for <code>errexit</code> and <code>nounset</code> can be written as 
 <div class="paragraph">
 <p>Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With <code>declare</code> certain
-attributes can bes defined to make a script more predictable and
+attributes can be defined to make a script more predictable and
 sometimes cut down on conversion logic.</p>
 </div>
 </div>
@@ -723,7 +723,7 @@ fi</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_substituion">Substituion</h3>
+<h3 id="_substitution">Substitution</h3>
 <div class="paragraph">
 <p>This one really gets me! I almost never see <code>${parameter/pattern/}</code>
 substitutions in the wild. And is has been around for ages.</p>
@@ -732,7 +732,7 @@ substitutions in the wild. And is has been around for ages.</p>
 <div class="content">
 <div class="paragraph">
 <p>Given it is not as powerful as <code>sed</code> but for most use cases it is more than
-sufficuent.</p>
+sufficient.</p>
 </div>
 </div>
 </div>
@@ -761,7 +761,7 @@ echo ${string//oo/u}             # lagun racun</code></pre>
 <div class="content">
 <div class="paragraph">
 <p>The script below loops 1000 times and does a string substition with <code>sed</code> and then via
-the <code>bash</code> builtin substituion. The result is quite stunning. The builtin is is factors
+the <code>bash</code> builtin substitution. The result is quite stunning. The builtin is is factors
 faster.</p>
 </div>
 <div class="listingblock">
@@ -820,7 +820,7 @@ sys     0m0.000s</code></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Builtin is blazingly fast as it does not spawns a subshell for
+<td>Builtin is blazingly fast as it does not spawn a subshell for
 every substitution.</td>
 </tr>
 </table>
@@ -832,7 +832,7 @@ every substitution.</td>
 <h3 id="_summary_4">Summary</h3>
 <div class="paragraph">
 <p>Parameter expansion in shell scripts can be a bit cryptic at first but it
-is definitely a lot faster then to run a sub shell for every little change
+is definitely a lot faster than to run a sub shell for every little change
 made to a small string.</p>
 </div>
 <div class="paragraph">
@@ -892,7 +892,7 @@ Requires bash &gt;= 4.0
 </div>
 </div>
 <div class="sect2">
-<h3 id="_substitution">Substitution</h3>
+<h3 id="_substitution_2">Substitution</h3>
 <div class="paragraph">
 <p>Applying substitution to each element of an array can also be done.
 Here a few examples.</p>
@@ -945,7 +945,7 @@ and excessive looping are required.</p>
 <div class="content">
 <div class="paragraph">
 <p>Conditional statements in classical shell script have a few
-shortcommings. For backward comptibility bash understands
+shortcomings. For backward comptibility bash understands
 the single brackets <code>[ &#8230;&#8203; ]</code> but are a couple more ways
 to enclose conditional statements.</p>
 </div>
@@ -968,7 +968,7 @@ it comes to dealing with empty strings in a comparison.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Effective the above conditional statement is expaned as
+<p>Effectively the above conditional statement is expanded as
 <code>[ = foo ]</code> because the variable <code>foo</code> is empty.
 There are two common ways to prevent the error:</p>
 </div>
@@ -1000,14 +1000,14 @@ Still to this day there I mostly encounter single square brackets all
 over the place. Hence the question "Are we stuck in the 70&#8217;s?".</p>
 </div>
 <div class="paragraph">
-<p>And while the double square brackets are not POSIx compliant, does
+<p>And while the double square brackets are not POSIX compliant, does
 it really matter if you are writing a bash script?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_regex_comparision">Regex comparision</h3>
+<h3 id="_regex_comparison">Regex comparison</h3>
 <div class="paragraph">
 <p>Bash has also a regex operator <code>=~</code> for matching strings.
 This often overlooked feature can save you lots of typing.</p>
@@ -1015,7 +1015,7 @@ This often overlooked feature can save you lots of typing.</p>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>More importantly string comparsions within bash are more
+<p>More importantly string comparisons within bash are more
 performant as no sub shell is required for the comparison.</p>
 </div>
 </div>
@@ -1070,9 +1070,9 @@ more relaxed rules.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_special_charachters">Special charachters</h3>
+<h3 id="_special_characters">Special characters</h3>
 <div class="paragraph">
-<p>With the exception of a few reserved charachters such as <code>$</code>, <code>|</code>,
+<p>With the exception of a few reserved characters such as <code>$</code>, <code>|</code>,
 <code>(</code> and <code>{</code> among others pretty much everything else works.</p>
 </div>
 <div class="listingblock">
@@ -1164,7 +1164,7 @@ to the ones found in the common scripting languages.</p>
 <div class="sect2">
 <h3 id="_dont_loop_printf">Don&#8217;t loop, printf!</h3>
 <div class="paragraph">
-<p>The bash <code>printf</code> can be used instead o loop for printing as it
+<p>The bash <code>printf</code> can be used instead of a loop for printing as it
 prints each additional argument not unlike a loop.</p>
 </div>
 <div class="listingblock">
@@ -1338,9 +1338,9 @@ typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")</co
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>Splitting field seperated data into variables is usually down with <code>awk</code> in shell
-scripts. And <code>awk</code> is supberb tools when working on large data sets. However simply
-spliting into shell variables is a performance killer!</p>
+<p>Splitting field separated data into variables is usually done with <code>awk</code> in shell
+scripts. And <code>awk</code> is a superb tool when working on large data sets. However simply
+splitting into shell variables is a performance killer!</p>
 </div>
 <div class="listingblock">
 <div class="title">Example script <code>read-list.sh</code></div>
@@ -1400,12 +1400,12 @@ sys     0m0.002s</code></pre>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Splitting with <code>awk</code> is about 580 times slower!
-Although there are only 100 iterrations <code>awk</code> is
+Although there are only 100 iterations <code>awk</code> is
 called 700 times.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Barely noticable the time used with the builtin.</td>
+<td>Barely noticeable the time used with the builtin.</td>
 </tr>
 </table>
 </div>
@@ -1456,10 +1456,10 @@ ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap"</code></pre>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>It is hard to imagine something concreate with the above example hence a small
+<p>It is hard to imagine something concrete with the above example hence a small
 example to show how it works. In the below example the script is adding a new
 SSH public key to the target user&#8217;s authorized_keys file. But only if the key
-is not alreay exisiting.</p>
+is not already existing.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example script <code>rex-add_ssh_key.sh</code></div>
