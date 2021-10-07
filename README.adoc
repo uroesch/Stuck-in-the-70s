@@ -9,3 +9,13 @@ With Bash being ubiquitous throughout the Unix world there is little reason not 
 take advantage of the more advanced features it provides. During the presentation
 one learns how to make Bash scripts more predictable, less prone to errors an speed
 up the execution time by using built in functions.
+
+== Repo clone
+
+This repository contains submodules for the asciidocotor sytles. To properly
+clone the repository use the following command:
+
+[source,console]
+----
+git clone --recursive https://github.com/uroesch/Stuck-in-the-70s.git
+----
