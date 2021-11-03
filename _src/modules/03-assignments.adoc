@@ -92,7 +92,7 @@ list="${list} bar" # declare -- list="foo bar"
 [source,bash]
 ----
 declare -a list=( foo )
-list+=bar         # declare -a list=(foo bar)
+list+=( bar )      # declare -a list=(foo bar)
 ----
 
 === Summary
