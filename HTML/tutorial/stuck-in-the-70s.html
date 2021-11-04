@@ -1091,6 +1091,145 @@ function 照() { echo '照'; }
 照                                       # 照</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Non valid characters in Bash function names</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Symbol</th>
+<th class="tableblock halign-left valign-top">ASCII</th>
+<th class="tableblock halign-left valign-top">UTF-8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exclamation mark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Double quote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0022</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">#</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0023</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dollar sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0024</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Percent sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0025</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ampersand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single quote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0027</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left parenthesis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0028</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right parenthesis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0029</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asterisk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u002a</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semicolon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u003b</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less-than</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u003c</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Greater-than</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u003e</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Question mark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u003f</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backslash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u005c</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grave accent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u0060</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left curly bracket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">123</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u007b</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">124</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u007c</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right curly bracket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">125</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u007d</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tilde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">126</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\u007e</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>This opens possibilities of creating prefixes or fake namespaces
 for functions. Pretty useful for sourced files and libraries.</p>
@@ -2982,7 +3121,7 @@ action is taken.</td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-04 19:51:03 UTC
+Last updated 2021-11-04 23:28:19 UTC
 </div>
 </div>
 </body>
