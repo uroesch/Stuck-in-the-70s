@@ -1,0 +1,26 @@
+name: Topic Suggestion
+description: Suggest a new topic to be included in the presentation.
+title: "[Topic Suggestion]: "
+labels: ["topic", "addition"]
+assignees:
+  - uroesch
+body:
+  - type: textarea
+    attributes:
+      label: Topic Suggestions
+      description: Describe why you think it should be in the presentation.
+      placeholder: Describe the new topic.
+      value: |
+        Thanks for taking the time to suggest new topics!
+    validations:
+      required: true
+  - type: markdown
+    id: Code suggestions
+    attributes:
+      value: |
+        ### Code samples
+        ```bash
+        ... sample code ...
+        ``` 
+    validations:
+      required: true
