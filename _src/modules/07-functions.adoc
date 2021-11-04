@@ -33,6 +33,8 @@ function 照() { echo '照'; }
 照                                       # 照
 ----
 
+ifndef::backend-revealjs[include::non-valid-function-chars.adoc[]]
+
 ifdef::backend-revealjs[=== !]
 
 This opens possibilities of creating prefixes or fake namespaces

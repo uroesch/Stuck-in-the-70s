@@ -1,0 +1,109 @@
+.Non valid characters in Bash function names
+[cols="4",options="header"]
+|===
+| Name
+| Symbol
+| ASCII
+| UTF-8
+
+| Exclamation mark
+| !
+| 33
+| \u0021
+
+| Double quote
+| "
+| 34
+| \u0022
+
+| Number sign
+| #
+| 35
+| \u0023
+
+| Dollar sign
+| $
+| 36
+| \u0024
+
+| Percent sign
+| %
+| 37
+| \u0025
+
+| Ampersand
+| &
+| 38
+| \u0026
+
+| Single quote
+| '
+| 39
+| \u0027
+
+| Left parenthesis
+| (
+| 40
+| \u0028
+
+| Right parenthesis
+| )
+| 41
+| \u0029
+
+| Asterisk
+| *
+| 42
+| \u002a
+
+| Semicolon
+| ;
+| 59
+| \u003b
+
+| Less-than
+| <
+| 60
+| \u003c
+
+| Greater-than
+| >
+| 62
+| \u003e
+
+| Question mark
+| ?
+| 63
+| \u003f
+
+| Backslash
+| \
+| 92
+| \u005c
+
+| Grave accent
+| `
+| 96
+| \u0060
+
+| Left curly bracket
+| {
+| 123
+| \u007b
+
+| Pipe
+| \|
+| 124
+| \u007c
+
+| Right curly bracket
+| }
+| 125
+| \u007d
+
+| Tilde
+| ~
+| 126
+| \u007e
+
+|===
