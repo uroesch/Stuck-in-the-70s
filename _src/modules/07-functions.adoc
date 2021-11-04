@@ -29,6 +29,8 @@ function :() { echo ':'; }
 :                                        # : 
 function ü() { echo 'ü'; } 
 ü                                        # ü
+function 照() { echo '照'; }
+照                                       # 照
 ----
 
 ifdef::backend-revealjs[=== !]

@@ -720,7 +720,9 @@ function -() { echo '-'; }
 function :() { echo ':'; }
 :                                        # :
 function ü() { echo 'ü'; }
-ü                                        # ü</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>This opens possibilities of creating prefixes or fake namespaces
+ü                                        # ü
+function 照() { echo '照'; }
+照                                       # 照</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>This opens possibilities of creating prefixes or fake namespaces
 for functions. Pretty useful for sourced files and libraries.</p></div>
 <div class="listingblock"><div class="title">Functions with faux namespaces</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">function funky() {
   # [ ... ]
