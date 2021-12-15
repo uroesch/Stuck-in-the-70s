@@ -1,0 +1,24 @@
+name: Enhancement
+description: Suggest additional code sample
+title: "[Enhancement]: "
+labels: ["enhancement"]
+assignees:
+  - uroesch
+body:
+  - type: textarea
+    attributes:
+      label: Enhancement
+      description: |
+        Describe the code example you would like to add to the
+        presentation
+      placeholder: Describe enhancement
+      value: |
+        Describe your enhancement and provide code samples.
+
+        ### Code samples
+
+        ```bash
+        echo 'sample code'
+        ``` 
+    validations:
+      required: true
