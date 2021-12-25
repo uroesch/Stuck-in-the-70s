@@ -22,6 +22,24 @@ int=string    # bash: string: unbound variable
 int=2         # declare -i int="2"
 ----
 
+ifdef::backend-revealjs[=== !]
+
+==== Integer math
+
+Fun fact, declaring a variable as an integer allows for simple integer math.
+
+[source,bash]
+----
+declare -i int
+
+int=1+2      # declare -i int="3"    # addition
+int=2-1      # declare -i int="1"    # subtraction
+int=8/2      # declare -i int="4"    # division
+int=9/2      # declare -i int="4"    # division rounded
+int=9%2      # declare -i int="1"    # modulo
+int=3*2      # declare -i int="6"    # multiplication
+----
+
 === Readonly
 
 Define a variable as a constant.
@@ -101,3 +119,5 @@ To create a readonly array use `declare -ra` for instance.
 
 Using `declare` helps narrowing the scope of the values a variable can hold.
 This makes the script more predictable!
+
+// vim: set colorcolumn=80 spell spelllang=en_US :
