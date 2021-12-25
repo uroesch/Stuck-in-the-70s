@@ -55,7 +55,7 @@ body {
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  font-family: "Roboto Slab", sans-serif;
+  font-family: "Summer of 76", "Roboto Slab", sans-serif;
   margin: 0 0 20px 0;
   color: #6dd9c1;
   text-shadow: 
@@ -74,12 +74,10 @@ body {
   text-shadow: 
    1px 1px 3px #ff5b06,
    2px 2px 3px #fe9b35;
-  font-family: "Summer of 76", "Roboto Slab", sans-serif;
   font-size: 2.4em; 
 }
 
 .reveal h2 {
-  font-family: "Summer of 76", "Roboto Slab", sans-serif;
   font-size: 1.6em;
 }
 

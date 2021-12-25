@@ -36,7 +36,11 @@
 </li>
 <li><a href="#foobar">I do declare!</a>
 <ul class="sectlevel2">
-<li><a href="#_integer">Integer</a></li>
+<li><a href="#_integer">Integer</a>
+<ul class="sectlevel3">
+<li><a href="#_integer_math">Integer math</a></li>
+</ul>
+</li>
 <li><a href="#_readonly">Readonly</a></li>
 <li><a href="#_lowercase">Lowercase</a></li>
 <li><a href="#_uppercase">Uppercase</a></li>
@@ -381,6 +385,24 @@ sometimes cut down on conversion logic.</p>
 int=string    # bash: string: unbound variable
 
 int=2         # declare -i int="2"</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_integer_math">Integer math</h4>
+<div class="paragraph">
+<p>Fun fact, declaring a variable as an integer allows for simple integer math.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">declare -i int
+
+int=1+2      # declare -i int="3"    # addition
+int=2-1      # declare -i int="1"    # subtraction
+int=8/2      # declare -i int="4"    # division
+int=9/2      # declare -i int="4"    # division rounded
+int=9%2      # declare -i int="1"    # modulo
+int=3*2      # declare -i int="6"    # multiplication</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -3121,7 +3143,7 @@ action is taken.</td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-04 23:28:19 UTC
+Last updated 2021-12-25 17:37:15 UTC
 </div>
 </div>
 </body>
