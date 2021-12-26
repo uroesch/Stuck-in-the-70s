@@ -1,23 +1,25 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[parameter-expansion]]
 == Substitution Revolution
 
 [.notes]
 --
-Some may know the classical parameter expansion from Bourne shell such as 
+Some may know the classical parameter expansion from Bourne shell such as
 `${parameter:N,N}` or `${parameter:-default}` or the ones from Korn shell
-`${parameter%pattern}` or `${parameter#pattern}`. But bash has a few of 
-its own. We look at three of them. 
+`${parameter%pattern}` or `${parameter#pattern}`. But bash has a few of
+its own. We look at three of them.
 --
 
 === Modify case
 
-There are two basic modes, the first is to convert the case 
+There are two basic modes, the first is to convert the case
 of the first letter. The second is to convert the whole string.
 
 [source,bash]
 ----
 declare -- to_lower="ALL CAPS"
-echo ${to_lower,}               # aLL CAPS   
+echo ${to_lower,}               # aLL CAPS
 echo ${to_lower,,}              # all caps
 
 declare -- to_upper="all lower"
@@ -29,7 +31,7 @@ NOTE: Requires bash >= 4.0
 
 ifdef::backend-revealjs[=== !]
 
-There is also the option of only matching a pattern to 
+There is also the option of only matching a pattern to
 adjust the case.
 
 [source,bash]
@@ -48,15 +50,15 @@ ifdef::backend-revealjs[=== !]
 .Real world example
 [source,bash]
 ----
-if [ `echo ${string1} | tr "[A-Z]" "[a-z]"` = "${string2}" ]; then  
-  # [...] 
+if [ `echo ${string1} | tr "[A-Z]" "[a-z]"` = "${string2}" ]; then
+  # [...]
 fi
 ----
 
 .With parameter expansion
 [source,bash]
 ----
-if [[ ${string1,,} == ${string2} ]]; then  
+if [[ ${string1,,} == ${string2} ]]; then
   # [...]
 fi
 ----
@@ -64,12 +66,12 @@ fi
 
 === Substitution
 
-This one really gets me! I almost never see `${parameter/pattern/}` 
-substitutions in the wild. And is has been around for ages. 
+This one really gets me! I almost never see `${parameter/pattern/}`
+substitutions in the wild. And is has been around for ages.
 
 [.notes]
 --
-Given it is not as powerful as `sed` but for most use cases it is more than 
+Given it is not as powerful as `sed` but for most use cases it is more than
 sufficient.
 --
 
@@ -85,7 +87,7 @@ ifdef::backend-revealjs[=== !]
 .Real world example
 [source,bash]
 ----
-string="lagoon racoon" 
+string="lagoon racoon"
 echo ${string} | sed 's/oo/u/g' # lagun racun
 ----
 
@@ -99,14 +101,14 @@ echo ${string//oo/u}             # lagun racun
 [.notes]
 --
 
-The script below loops 1000 times and does a string substitution with `sed` and then via 
-the `bash` builtin substitution. The result is quite stunning. The builtin is is factors
-faster.
+The script below loops 1000 times and does a string substitution with `sed` and
+then via the `bash` builtin substitution. The result is quite stunning. The
+builtin is is factors faster.
 
 .Example script `letter-substitution.sh`
 [source,bash]
 ----
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 set -o errexit
 set -o nounset
@@ -125,8 +127,8 @@ function sed-loop() {
 function builtin-loop() {
   printf "${TITLE}" '${var//o/u}'
   for i in {0..1000}; do
-    echo ${STRING//o/u} &>/dev/null 
-  done 
+    echo ${STRING//o/u} &>/dev/null
+  done
 }
 
 time sed-loop
@@ -136,7 +138,7 @@ time builtin-loop
 .Results
 [source,console]
 ----
-$ bash letter-substitution.sh 
+$ bash letter-substitution.sh
 
 Substitute 'o' for 'u' in string with 'sed' a 1000 times
 
@@ -151,15 +153,15 @@ user    0m0.020s
 sys     0m0.000s
 ----
 <1> `sed` takes about 8 times longer to complete the job
-<2> Builtin is blazingly fast as it does not spawns a subshell for 
+<2> Builtin is blazingly fast as it does not spawns a subshell for
     every substitution.
 --
 
 === Summary
 
-Parameter expansion in shell scripts can be a bit cryptic at first but it 
+Parameter expansion in shell scripts can be a bit cryptic at first but it
 is definitely a lot faster then to run a sub shell for every little change
 made to a small string.
 
-There are many more expansions available but the examples here are bash specific 
+There are many more expansions available but the examples here are bash specific
 and won't work in the predecessor shells such as Bourne or Korn shell.

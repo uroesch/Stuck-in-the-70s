@@ -1,11 +1,13 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[assignments]]
 == Operation plus equal
 
 [.notes]
 --
-With Bash 3.1 the new assignment operator `+=` was introduced. 
-It makes the previously cumbersome task of appending or adding content to 
-an already populated variable a lot easier and DRYer.  
+With Bash 3.1 the new assignment operator `+=` was introduced.
+It makes the previously cumbersome task of appending or adding content to
+an already populated variable a lot easier and DRYer.
 The following examples show the classical way and the new improved way.
 --
 
@@ -13,7 +15,7 @@ The following examples show the classical way and the new improved way.
 
 [.notes]
 --
-There is a few ways incrementing integers in bash but the focus is on the `+=` 
+There is a few ways incrementing integers in bash but the focus is on the `+=`
 assignment operator.
 --
 
@@ -73,7 +75,7 @@ declare -- string=foo
 string+=bar            # declare -- string="foobar"
 ----
 
-=== Push to array 
+=== Push to array
 
 [.notes]
 --
@@ -99,6 +101,6 @@ list+=( bar )      # declare -a list=(foo bar)
 
 The `+=` operator helps with the assignment of existing and brings
 a bit more comfort to the previously wordy and often times ugly process
-of appending or incrementing numbers. 
+of appending or incrementing numbers.
 
 WARNING: A `-=` assignment operator does not exist!

@@ -1,7 +1,7 @@
 [[real-world]]
 == Real World Examples ™
 
-A few examples on how to reduce clutter with examples 
+A few examples on how to reduce clutter with examples
 taken from the Real World ™.
 
 === The power of read(ing)
@@ -39,14 +39,14 @@ typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")
 [.notes]
 --
 
-Splitting field separated data into variables is usually down with `awk` in shell
-scripts. And `awk` is superb tools when working on large data sets. However simply
-splitting into shell variables is a performance killer! 
+Splitting field separated data into variables is usually down with `awk` in
+shell scripts. And `awk` is superb tools when working on large data sets.
+However simply splitting into shell variables is a performance killer!
 
 .Example script `read-list.sh`
 [source,bash]
 ----
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 set -o errexit
 set -o nounset
@@ -69,7 +69,7 @@ function awk-loop() {
 }
 
 function read-loop() {
-  printf "${TITLE}" 'IFS=: read ...' 
+  printf "${TITLE}" 'IFS=: read ...'
   for i in {0..100}; do
     IFS=: read login pw uid gid gecos home shell <<< "${LIST}"
   done
@@ -81,7 +81,7 @@ time read-loop
 
 [source,console]
 ----
-$ bash read-list.sh 
+$ bash read-list.sh
 
 Split string to variables with 'awk -F : ...' a 100 times
 
@@ -118,7 +118,7 @@ else
 fi
 ----
 
-.Better with case 
+.Better with case
 [source,bash]
 ----
 case ${host} in
@@ -131,19 +131,19 @@ esac
 === Poor man's Ansible
 
 Execute a locally defined function on a remote machine without
-first copying the code. 
+first copying the code.
 
 [source,bash]
 ----
 function bootstrap() { config_host; hostname; }
 
-ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap" 
+ssh ch-dev.acme.com "$(declare -f bootstrap); bootstrap"
 ----
 
 
 [.notes]
 --
-It is hard to imagine something concrete with the above example hence a small 
+It is hard to imagine something concrete with the above example hence a small
 example to show how it works. In the below example the script is adding a new
 SSH public key to the target user's authorized_keys file. But only if the key
 is not already existing.
@@ -151,7 +151,7 @@ is not already existing.
 .Example script `rex-add_ssh_key.sh`
 [source,bash]
 ----
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 function add_ssh_key() {
   set -o errexit
@@ -162,13 +162,13 @@ function add_ssh_key() {
   declare -r SSH_KEY=${1}; shift;
   declare -r SSH_COMMENT=${1}; shift;
   declare -r AUTH_KEYS=${HOME}/.ssh/authorized_keys
-  
+
   function key_already_in_place() {
     grep -q ${SSH_KEY} ${AUTH_KEYS}
   }
 
   function add_key() {
-    key_already_in_place && { 
+    key_already_in_place && {
       echo "Key already exists in ${AUTH_KEYS}";
       return 0;
     }
@@ -190,13 +190,14 @@ ssh localhost \
 .Results from running above script
 [source,console]
 ----
-$ bash rex-add_ssh_key.sh 
+$ bash rex-add_ssh_key.sh
 Key succesfully added to /home/test/.ssh/authorized_keys <1>
 
-$ bash rex-add_ssh_key.sh 
+$ bash rex-add_ssh_key.sh
 Key already exists in /home/test/.ssh/authorized_keys <2>
 ----
 <1> Running the first time the key is added
 <2> Running the second time the key is already present and no
     action is taken.
 --
+// vim: set colorcolumn=80 spell spelllang=en_us :

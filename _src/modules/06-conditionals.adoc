@@ -1,3 +1,5 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[conditionals]]
 == Perfect condition
 
@@ -13,8 +15,8 @@ Let's dive in.
 
 === Double square brackets
 
-Double square brackets are more forgiving when 
-it comes to dealing with empty strings in a comparison. 
+Double square brackets are more forgiving when
+it comes to dealing with empty strings in a comparison.
 
 ifdef::backend-revealjs[=== !]
 
@@ -40,7 +42,7 @@ foo=
 ifdef::backend-revealjs[=== !]
 
 Korn shell introduced the more robusts `[[` which does not
-suffer the same limitations. 
+suffer the same limitations.
 
 .Korn shell style double square brackets
 [source,bash]
@@ -76,7 +78,7 @@ declare -i number=1
 === Regex comparison
 
 Bash has also a regex operator `=~` for matching strings.
-This often overlooked feature can save you lots of typing. 
+This often overlooked feature can save you lots of typing.
 
 [.notes]
 --
@@ -89,7 +91,7 @@ performant as no sub shell is required for the comparison.
 ----
 string=foobar
 if echo ${string} | grep -q '[Bb]ar'; then
-  # [ ... ]   
+  # [ ... ]
 fi
 ----
 
@@ -107,5 +109,4 @@ fi
 These are but a few small examples creating "perfect conditions"
 for your bash scripts. Although they are not POSIX compatible
 the fact that `ksh`, `zsh` and `bash` among other implement them
-makes them virtually portable.  
-
+makes them virtually portable.

@@ -1,3 +1,5 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[functions]]
 == Funky, funky, functions!
 
@@ -6,28 +8,28 @@
 Function names are quite restrictive in many languages. For instance
 minuses `-` are not permitted or special characters can not be used.
 
-While this is true for traditional shell scripts as well Bash has 
-more relaxed rules. 
+While this is true for traditional shell scripts as well Bash has
+more relaxed rules.
 
 Let's dive in!
 --
 
-=== Special characters 
+=== Special characters
 
-With the exception of a few reserved characters such as `$`, `|`, 
-`(` and `{` among others pretty much everything else works. 
+With the exception of a few reserved characters such as `$`, `|`,
+`(` and `{` among others pretty much everything else works.
 
 [source,bash]
 ----
-function @() { echo '@'; } 
-@                                        # @ 
-function /() { echo '/'; } 
-/                                        # / 
-function -() { echo '-'; } 
--                                        # - 
-function :() { echo ':'; } 
-:                                        # : 
-function ü() { echo 'ü'; } 
+function @() { echo '@'; }
+@                                        # @
+function /() { echo '/'; }
+/                                        # /
+function -() { echo '-'; }
+-                                        # -
+function :() { echo ':'; }
+:                                        # :
+function ü() { echo 'ü'; }
 ü                                        # ü
 function 照() { echo '照'; }
 照                                       # 照
@@ -59,7 +61,7 @@ test::funky      # test funky function
 === Function within functions
 
 It it is even possible to place functions within functions.
-Unfortunately there they are still accessible globally. 
+Unfortunately there they are still accessible globally.
 
 [.notes]
 --
@@ -74,7 +76,7 @@ function parent() {
     # [ ... ]
   }
   @child
-  # [ ... ] 
+  # [ ... ]
   @child
 }
 ----

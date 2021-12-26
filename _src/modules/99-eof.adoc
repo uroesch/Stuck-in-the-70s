@@ -1,3 +1,5 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 ifdef::backend-revealjs[]
 [[eof]]
 == EOF

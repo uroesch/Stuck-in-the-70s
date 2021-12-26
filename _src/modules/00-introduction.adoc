@@ -1,30 +1,26 @@
-// ifdef::backend-revealjs[=== !]
-
-// image::stuck-in-the-70s.svg[60%]
-
-// ifdef::backend-revealjs[=== !]
+// vim: set colorcolumn=80 spell spelllang=en_us :
 
 [[why-bash]]
 == Why bash?
 As part of my work I encounter many shell scripts which are poorly written
-but are essential for the infrastructure to function properly. 
+but are essential for the infrastructure to function properly.
 
 Most of the time the stake holders aren't sufficiently trained to use a higher
-level language such as `python`, `ruby` or `go`. 
+level language such as `python`, `ruby` or `go`.
 
-By introducing modern `bash` features, the scripts can be maintained by 
+By introducing modern `bash` features, the scripts can be maintained by
 all stake holders without creating high hurdles for entry.
 
 [.notes]
 --
-Many times during my professional career I encountered the magical script 
+Many times during my professional career I encountered the magical script
 written by a former employee who left years ago. Said script was written in an
 obscure language that was all the hype at the time but its star has faded since.
 No one in the team has the time or is willing to learn the language, port it to
 a more common language or they are simply too afraid of touching the code.
 
 I'm sure many have experienced similar situations. This presentation is an
-introduction to modern `bash` script concepts to help sanitize old shell scripts 
+introduction to modern `bash` script concepts to help sanitize old shell scripts
 in need of a bit polish.
 --
 

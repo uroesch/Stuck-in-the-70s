@@ -1,3 +1,5 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[foobar]]
 == I do declare!
 
@@ -119,5 +121,3 @@ To create a readonly array use `declare -ra` for instance.
 
 Using `declare` helps narrowing the scope of the values a variable can hold.
 This makes the script more predictable!
-
-// vim: set colorcolumn=80 spell spelllang=en_US :

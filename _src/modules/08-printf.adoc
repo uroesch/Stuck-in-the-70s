@@ -1,10 +1,12 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[printf]]
 == What the printf?
 
 [.notes]
 --
 The builtin `printf` function comes with a few differences compared
-to the ones found in the common scripting languages. 
+to the ones found in the common scripting languages.
 
 Here we have a look how we can use `printf` a log smarter!
 --
@@ -14,7 +16,7 @@ Here we have a look how we can use `printf` a log smarter!
 The bash `printf` can be used instead of a loop for printing as it
 prints each additional argument not unlike a loop.
 
-.Print fruit loop :) 
+.Print fruit loop :)
 [source,bash]
 ----
 declare -a fruit=( banana apple pear )
@@ -46,7 +48,7 @@ code reviewer.
 .Example script `pretty-lines.sh`
 [source,bash]
 ----
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 function -----() {
   printf "%0.1s" -{1..16} $'\n'
@@ -71,7 +73,7 @@ Title
 
 === sprintf anyone?
 
-One can even emulate the `sprintf` function by using the `-v` 
+One can even emulate the `sprintf` function by using the `-v`
 switch.
 
 [source,bash]
@@ -89,7 +91,7 @@ With the `%q` placeholder `printf` provides a shell escaping routine.
 
 [source,bash]
 ----
-printf "%q" 'cat foo | grep "foo bar"' 
+printf "%q" 'cat foo | grep "foo bar"'
 # cat\ foo\ \|\ grep\ \"foo\ bar\"
 ----
 

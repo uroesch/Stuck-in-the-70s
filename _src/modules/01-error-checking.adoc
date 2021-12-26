@@ -1,3 +1,5 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[error-checks]]
 == Errors, Shmerrors
 
@@ -36,7 +38,7 @@ echo 'Still alive?' # Still alive?; exit rc 0
 
 set -o errexit
 
-false               # exit rc 1 
+false               # exit rc 1
 echo 'Still alive?'
 ----
 
@@ -61,11 +63,11 @@ echo 'Still alive?' # Still alive?; exit rc 0
 [.notes]
 --
 Imagine a scenario where you remove a directory within a script where the last
-part of the path is provided by a variable. For one reason or another said variable
-is not defined and instead of the target directory you remove a lot more than you
-bargained for. 
+part of the path is provided by a variable. For one reason or another said
+variable is not defined and instead of the target directory you remove a lot
+more than you bargained for.
 
-`rm -rf /home/jdoe/${temp_dir}` 
+`rm -rf /home/jdoe/${temp_dir}`
 
 But don't dispair with `set -o nounset` this can be prevented.
 --
@@ -75,7 +77,7 @@ But don't dispair with `set -o nounset` this can be prevented.
 ----
 #!/usr/bin/env bash
 
-rm -rf /home/jdoe/${temp_dir} # rm -rf /home/jdoe/ 
+rm -rf /home/jdoe/${temp_dir} # rm -rf /home/jdoe/
 ----
 
 .Script with `nounset` option
@@ -93,14 +95,14 @@ rm -rf /home/jdoe/${temp_dir} # bash: temp_dir: unbound variable; exit rc 1
 [.notes]
 --
 When working with pipes per default only the right most command in the chain
-is considered and checked for errors. 
+is considered and checked for errors.
 
-With `pipefail` each command within the pipe construct is evaluted. 
+With `pipefail` each command within the pipe construct is evaluted.
 This is especially useful for `awk` commands which generally return and
 exit status of `0`.
 --
 
-.Script without `pipefail` option 
+.Script without `pipefail` option
 [source,bash]
 ----
 #!/usr/bin/env bash
@@ -120,13 +122,14 @@ find /fake-dir | awk '{print $1}' # exit rc 1
 
 === Summary
 
-Always use the option triplet `errexit`, `nounset` and `pipefail` in your scripts!
+Always use the option triplet `errexit`, `nounset` and `pipefail` in your
+scripts!
 
 [.notes]
 --
-When refactoring an existing script add them first to see how far down the rabbit
-whole the journey goes. If the script runs without a hitch the code might not
-be as bad as assumed.
+When refactoring an existing script add them first to see how far down the
+rabbit whole the journey goes. If the script runs without a hitch the code might
+not be as bad as assumed.
 --
 
 [source,bash]
@@ -160,7 +163,7 @@ set -o errexit
 
 [.notes]
 --
-NOTE: The options for `errexit` and `nounset` can be written as `set -e` or `set -u`
-      respectively. But I prefer writing them out to help a novice user to better
-      understand these settings.
+NOTE: The options for `errexit` and `nounset` can be written as `set -e` or
+      `set -u` respectively. But I prefer writing them out to help a novice user
+      to better understand these settings.
 --

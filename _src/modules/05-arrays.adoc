@@ -1,10 +1,12 @@
+// vim: set colorcolumn=80 spell spelllang=en_us :
+
 [[arrays]]
 == ( hip hip )
 
 [.notes]
 --
 Arrays have been around in bash for quite some time but the encounters
-in the real world are few and far between. 
+in the real world are few and far between.
 
 Combined with the parameter expansion they become a powerful asset
 DRYing up a WET script.
@@ -71,5 +73,5 @@ echo ${fruits[@]/%s/}         # banana apple pear
 === Summary
 
 Parameter expansion combined with bash arrays allows to make volatile changes
-to a list of values at the time of echoing. No `sed`, `tr` and `awk` constructs 
+to a list of values at the time of echoing. No `sed`, `tr` and `awk` constructs
 and excessive looping are required.
