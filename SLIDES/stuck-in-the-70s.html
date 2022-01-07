@@ -435,9 +435,9 @@ set -o errexit
 
 false || :
 echo 'Still alive?' # Still alive?; exit rc 0</code></pre></div></div></div></section><section id="_set_o_nounset"><h2>set -o nounset</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Imagine a scenario where you remove a directory within a script where the last
-part of the path is provided by a variable. For one reason or another said variable
-is not defined and instead of the target directory you remove a lot more than you
-bargained for.</p></div>
+part of the path is provided by a variable. For one reason or another said
+variable is not defined and instead of the target directory you remove a lot
+more than you bargained for.</p></div>
 <div class="paragraph"><p><code>rm -rf /home/jdoe/${temp_dir}</code></p></div>
 <div class="paragraph"><p>But don&#8217;t dispair with <code>set -o nounset</code> this can be prevented.</p></div></aside>
 <div class="listingblock"><div class="title">Script without <code>nounset</code> option</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
@@ -459,10 +459,11 @@ find /fake-dir | awk '{print $1}' # exit rc 0</code></pre></div></div>
 
 set -o pipefail
 
-find /fake-dir | awk '{print $1}' # exit rc 1</code></pre></div></div></div></section><section id="_summary"><h2>Summary</h2><div class="slide-content"><div class="paragraph"><p>Always use the option triplet <code>errexit</code>, <code>nounset</code> and <code>pipefail</code> in your scripts!</p></div>
-<aside class="notes"><div class="paragraph"><p>When refactoring an existing script add them first to see how far down the rabbit
-whole the journey goes. If the script runs without a hitch the code might not
-be as bad as assumed.</p></div></aside>
+find /fake-dir | awk '{print $1}' # exit rc 1</code></pre></div></div></div></section><section id="_summary"><h2>Summary</h2><div class="slide-content"><div class="paragraph"><p>Always use the option triplet <code>errexit</code>, <code>nounset</code> and <code>pipefail</code> in your
+scripts!</p></div>
+<aside class="notes"><div class="paragraph"><p>When refactoring an existing script add them first to see how far down the
+rabbit whole the journey goes. If the script runs without a hitch the code might
+not be as bad as assumed.</p></div></aside>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 set -o errexit
@@ -479,9 +480,9 @@ false
 set -o errexit
 
 [...]</code></pre></div></div>
-<aside class="notes"><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">The options for <code>errexit</code> and <code>nounset</code> can be written as <code>set -e</code> or <code>set -u</code>
-      respectively. But I prefer writing them out to help a novice user to better
-      understand these settings.</td></tr></table></div></aside>
+<aside class="notes"><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">The options for <code>errexit</code> and <code>nounset</code> can be written as <code>set -e</code> or
+      <code>set -u</code> respectively. But I prefer writing them out to help a novice user
+      to better understand these settings.</td></tr></table></div></aside>
 <div style="page-break-after: always;"></div></div></section></section>
 <section><section id="foobar"><h2>I do declare!</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With <code>declare</code> certain
@@ -499,7 +500,15 @@ int=2-1      # declare -i int="1"    # subtraction
 int=8/2      # declare -i int="4"    # division
 int=9/2      # declare -i int="4"    # division rounded
 int=9%2      # declare -i int="1"    # modulo
-int=3*2      # declare -i int="6"    # multiplication</code></pre></div></div></div></section><section id="_readonly"><h2>Readonly</h2><div class="slide-content"><div class="paragraph"><p>Define a variable as a constant.</p></div>
+int=3*2      # declare -i int="6"    # multiplication</code></pre></div></div></div></section><section><div class="slide-content"><h3>Zero padded numbers</h3><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">Caution! The zero padded numbers <code>08</code> and <code>09</code> are interpreted as octal
+and throw an error.</td></tr></table></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -i int
+
+int=01  # declare -i int="1"
+# ...
+int=07  # declare -i int="7"
+int=08  # bash: 08: value too great for base (error token is "08")
+int=09  # bash: 09: value too great for base (error token is "09")</code></pre></div></div></div></section><section id="_readonly"><h2>Readonly</h2><div class="slide-content"><div class="paragraph"><p>Define a variable as a constant.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -r readonly=set-in-stone
 
 readonly=change   # bash: readonly: readonly variable</code></pre></div></div></div></section><section id="_lowercase"><h2>Lowercase</h2><div class="slide-content"><div class="paragraph"><p>The content of the variable is converted to lowercase.</p></div>
@@ -602,9 +611,9 @@ echo ${string//oo/u}            # lagun racun</code></pre></div></div></div></se
 echo ${string} | sed 's/oo/u/g' # lagun racun</code></pre></div></div>
 <div class="listingblock"><div class="title">With parameter expansion</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- string="lagoon racoon"
 echo ${string//oo/u}             # lagun racun</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>The script below loops 1000 times and does a string substitution with <code>sed</code> and then via
-the <code>bash</code> builtin substitution. The result is quite stunning. The builtin is is factors
-faster.</p></div>
+<aside class="notes"><div class="paragraph"><p>The script below loops 1000 times and does a string substitution with <code>sed</code> and
+then via the <code>bash</code> builtin substitution. The result is quite stunning. The
+builtin is is factors faster.</p></div>
 <div class="listingblock"><div class="title">Example script <code>letter-substitution.sh</code></div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 set -o errexit
@@ -805,9 +814,9 @@ IFS=: read fname lname role &lt;&lt;&lt; "${info}"</code></pre></div></div></div
 IFS=: read -a person &lt;&lt;&lt; "${info}"
 
 typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Splitting field separated data into variables is usually down with <code>awk</code> in shell
-scripts. And <code>awk</code> is superb tools when working on large data sets. However simply
-splitting into shell variables is a performance killer!</p></div>
+<aside class="notes"><div class="paragraph"><p>Splitting field separated data into variables is usually down with <code>awk</code> in
+shell scripts. And <code>awk</code> is superb tools when working on large data sets.
+However simply splitting into shell variables is a performance killer!</p></div>
 <div class="listingblock"><div class="title">Example script <code>read-list.sh</code></div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 set -o errexit
