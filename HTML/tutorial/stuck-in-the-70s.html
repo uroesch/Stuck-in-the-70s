@@ -39,6 +39,7 @@
 <li><a href="#_integer">Integer</a>
 <ul class="sectlevel3">
 <li><a href="#_integer_math">Integer math</a></li>
+<li><a href="#_beware_of_zero_padded_numbers">Beware of zero padded numbers</a></li>
 </ul>
 </li>
 <li><a href="#_readonly">Readonly</a></li>
@@ -232,9 +233,9 @@ echo 'Still alive?' # Still alive?; exit rc 0</code></pre>
 <div class="content">
 <div class="paragraph">
 <p>Imagine a scenario where you remove a directory within a script where the last
-part of the path is provided by a variable. For one reason or another said variable
-is not defined and instead of the target directory you remove a lot more than you
-bargained for.</p>
+part of the path is provided by a variable. For one reason or another said
+variable is not defined and instead of the target directory you remove a lot
+more than you bargained for.</p>
 </div>
 <div class="paragraph">
 <p><code>rm -rf /home/jdoe/${temp_dir}</code></p>
@@ -300,14 +301,15 @@ find /fake-dir | awk '{print $1}' # exit rc 1</code></pre>
 <div class="sect2">
 <h3 id="_summary">Summary</h3>
 <div class="paragraph">
-<p>Always use the option triplet <code>errexit</code>, <code>nounset</code> and <code>pipefail</code> in your scripts!</p>
+<p>Always use the option triplet <code>errexit</code>, <code>nounset</code> and <code>pipefail</code> in your
+scripts!</p>
 </div>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>When refactoring an existing script add them first to see how far down the rabbit
-whole the journey goes. If the script runs without a hitch the code might not
-be as bad as assumed.</p>
+<p>When refactoring an existing script add them first to see how far down the
+rabbit whole the journey goes. If the script runs without a hitch the code might
+not be as bad as assumed.</p>
 </div>
 </div>
 </div>
@@ -347,9 +349,9 @@ set -o errexit
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The options for <code>errexit</code> and <code>nounset</code> can be written as <code>set -e</code> or <code>set -u</code>
-      respectively. But I prefer writing them out to help a novice user to better
-      understand these settings.
+The options for <code>errexit</code> and <code>nounset</code> can be written as <code>set -e</code> or
+      <code>set -u</code> respectively. But I prefer writing them out to help a novice user
+      to better understand these settings.
 </td>
 </tr>
 </table>
@@ -402,6 +404,33 @@ int=8/2      # declare -i int="4"    # division
 int=9/2      # declare -i int="4"    # division rounded
 int=9%2      # declare -i int="1"    # modulo
 int=3*2      # declare -i int="6"    # multiplication</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_beware_of_zero_padded_numbers">Beware of zero padded numbers</h4>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Caution! The zero padded numbers <code>08</code> and <code>09</code> are interpreted as octal
+and throw an error.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">declare -i int
+
+int=01  # declare -i int="1"
+# ...
+int=07  # declare -i int="7"
+int=08  # bash: 08: value too great for base (error token is "08")
+int=09  # bash: 09: value too great for base (error token is "09")</code></pre>
 </div>
 </div>
 </div>
@@ -782,9 +811,9 @@ echo ${string//oo/u}             # lagun racun</code></pre>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>The script below loops 1000 times and does a string substitution with <code>sed</code> and then via
-the <code>bash</code> builtin substitution. The result is quite stunning. The builtin is is factors
-faster.</p>
+<p>The script below loops 1000 times and does a string substitution with <code>sed</code> and
+then via the <code>bash</code> builtin substitution. The result is quite stunning. The
+builtin is is factors faster.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example script <code>letter-substitution.sh</code></div>
@@ -1501,9 +1530,9 @@ typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")</co
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">
-<p>Splitting field separated data into variables is usually down with <code>awk</code> in shell
-scripts. And <code>awk</code> is superb tools when working on large data sets. However simply
-splitting into shell variables is a performance killer!</p>
+<p>Splitting field separated data into variables is usually down with <code>awk</code> in
+shell scripts. And <code>awk</code> is superb tools when working on large data sets.
+However simply splitting into shell variables is a performance killer!</p>
 </div>
 <div class="listingblock">
 <div class="title">Example script <code>read-list.sh</code></div>
@@ -3143,7 +3172,7 @@ action is taken.</td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-25 17:37:15 UTC
+Last updated 2022-01-07 11:05:58 UTC
 </div>
 </div>
 </body>

@@ -42,6 +42,25 @@ int=9%2      # declare -i int="1"    # modulo
 int=3*2      # declare -i int="6"    # multiplication
 ----
 
+ifdef::backend-revealjs[=== !]
+
+==== Beware of zero padded numbers
+
+[WARNING]
+Caution! The zero padded numbers `08` and `09` are interpreted as octal 
+and throw an error.
+
+[source,bash]
+----
+declare -i int
+
+int=01  # declare -i int="1"
+# ...   
+int=07  # declare -i int="7"
+int=08  # bash: 08: value too great for base (error token is "08")
+int=09  # bash: 09: value too great for base (error token is "09")
+----
+
 === Readonly
 
 Define a variable as a constant.
