@@ -34,7 +34,7 @@
 <li><a href="#_summary">Summary</a></li>
 </ul>
 </li>
-<li><a href="#foobar">I do declare!</a>
+<li><a href="#declare">I do declare!</a>
 <ul class="sectlevel2">
 <li><a href="#_integer">Integer</a>
 <ul class="sectlevel3">
@@ -363,7 +363,7 @@ The options for <code>errexit</code> and <code>nounset</code> can be written as 
 </div>
 </div>
 <div class="sect1">
-<h2 id="foobar">I do declare!</h2>
+<h2 id="declare">I do declare!</h2>
 <div class="sectionbody">
 <div class="openblock notes">
 <div class="content">
@@ -1516,7 +1516,20 @@ IFS=: read fname lname role &lt;&lt;&lt; "${info}"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The same but read everything into an array.</p>
+<p>Splitting with more than one delimiting character using regular expression
+ranges.</p>
+</div>
+<div class="listingblock">
+<div class="title">read with regex range</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">declare -- info="Joe:Doe:Sysadmin;sys@mail.com"
+IFS="[:;]" read fname lname role mail &lt;&lt;&lt; "${info}"
+
+typeset -p mail # declare -- mail="sys@mail.com"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Splitting everything into an array.</p>
 </div>
 <div class="listingblock">
 <div class="title">read into array</div>
@@ -3172,7 +3185,7 @@ action is taken.</td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-07 11:05:58 UTC
+Last updated 2022-02-16 21:55:03 UTC
 </div>
 </div>
 </body>

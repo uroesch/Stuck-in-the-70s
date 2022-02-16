@@ -23,9 +23,24 @@ declare -- info="Joe:Doe:Sysadmin"
 IFS=: read fname lname role <<< "${info}"
 ----
 
+
 ifdef::backend-revealjs[=== !]
 
-The same but read everything into an array.
+Splitting with more than one delimiting character using regular expression 
+ranges.
+
+.read with regex range
+[source,bash]
+----
+declare -- info="Joe:Doe:Sysadmin;sys@mail.com"
+IFS="[:;]" read fname lname role mail <<< "${info}"
+
+typeset -p mail # declare -- mail="sys@mail.com"
+----
+
+ifdef::backend-revealjs[=== !]
+
+Splitting everything into an array.
 
 .read into array
 [source,bash]
@@ -35,6 +50,7 @@ IFS=: read -a person <<< "${info}"
 
 typeset -p person   # declare -a person=([0]="Joe" [1]="Doe" [2]="Sysadmin")
 ----
+
 
 [.notes]
 --

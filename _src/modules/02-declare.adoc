@@ -1,6 +1,6 @@
 // vim: set colorcolumn=80 spell spelllang=en_us :
 
-[[foobar]]
+[[declare]]
 == I do declare!
 
 [.notes]

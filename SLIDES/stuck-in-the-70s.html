@@ -484,7 +484,7 @@ set -o errexit
       <code>set -u</code> respectively. But I prefer writing them out to help a novice user
       to better understand these settings.</td></tr></table></div></aside>
 <div style="page-break-after: always;"></div></div></section></section>
-<section><section id="foobar"><h2>I do declare!</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Variables in shell scripts are typeless, quite a few popular scripting
+<section><section id="declare"><h2>I do declare!</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Variables in shell scripts are typeless, quite a few popular scripting
 languages do the same and are loosely typed. With <code>declare</code> certain
 attributes can be defined to make a script more predictable and
 sometimes cut down on conversion logic.</p></div></aside></div></section><section id="_integer"><h2>Integer</h2><div class="slide-content"><div class="paragraph"><p>Ensure the variable only holds integers.</p></div>
@@ -500,7 +500,7 @@ int=2-1      # declare -i int="1"    # subtraction
 int=8/2      # declare -i int="4"    # division
 int=9/2      # declare -i int="4"    # division rounded
 int=9%2      # declare -i int="1"    # modulo
-int=3*2      # declare -i int="6"    # multiplication</code></pre></div></div></div></section><section><div class="slide-content"><h3>Zero padded numbers</h3><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">Caution! The zero padded numbers <code>08</code> and <code>09</code> are interpreted as octal
+int=3*2      # declare -i int="6"    # multiplication</code></pre></div></div></div></section><section><div class="slide-content"><h3>Beware of zero padded numbers</h3><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">Caution! The zero padded numbers <code>08</code> and <code>09</code> are interpreted as octal
 and throw an error.</td></tr></table></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -i int
 
@@ -809,7 +809,12 @@ fname=`echo ${info} | awk -F : '{ print $1 }'`   # Joe
 lname=`echo ${info} | awk -F : '{ print $2 }'`   # Doe
 role=`echo ${info} | awk -F : '{ print $3 }'`    # Sysadmin</code></pre></div></div>
 <div class="listingblock"><div class="title">read with IFS</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- info="Joe:Doe:Sysadmin"
-IFS=: read fname lname role &lt;&lt;&lt; "${info}"</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>The same but read everything into an array.</p></div>
+IFS=: read fname lname role &lt;&lt;&lt; "${info}"</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>Splitting with more than one delimiting character using regular expression
+ranges.</p></div>
+<div class="listingblock"><div class="title">read with regex range</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- info="Joe:Doe:Sysadmin;sys@mail.com"
+IFS="[:;]" read fname lname role mail &lt;&lt;&lt; "${info}"
+
+typeset -p mail # declare -- mail="sys@mail.com"</code></pre></div></div></div></section><section><div class="slide-content"><div class="paragraph"><p>Splitting everything into an array.</p></div>
 <div class="listingblock"><div class="title">read into array</div><div class="content"><pre class="highlight"><code class="language-bash" data-lang="bash">declare -- info="Joe:Doe:Sysadmin"
 IFS=: read -a person &lt;&lt;&lt; "${info}"
 
